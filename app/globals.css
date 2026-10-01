@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "../styles/colors.css";
+
+@theme inline {
+  --color-indigo: var(--color-indigo);
+  --color-indigo-deep: var(--color-indigo-deep);
+  --color-indigo-tint: var(--color-indigo-tint);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-ink: var(--color-ink);
+  --color-paper: var(--color-paper);
+  --color-paper-tint: var(--color-paper-tint);
+  --color-line: var(--color-line);
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Work Sans", sans-serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.prose-blog {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.prose-blog h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--color-indigo-deep);
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+.prose-blog p {
+  margin-bottom: 1.1em;
+}
+.prose-blog ul, .prose-blog ol {
+  margin-bottom: 1.1em;
+  padding-left: 1.4em;
+}
+.prose-blog li {
+  margin-bottom: 0.4em;
+}
+.prose-blog a {
+  color: var(--color-indigo);
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+}

@@ -1,0 +1,27 @@
+/*
+  TechInHausa — color tokens
+  ---------------------------------
+  This is the ONLY file that should ever need editing to change the
+  site's palette. Every color used across the site is defined here as
+  a CSS variable, and mapped into Tailwind via app/globals.css so
+  classes like bg-indigo, text-gold, bg-paper etc. all pull from here.
+
+  Current direction: Indigo & Gold
+  (a nod to Kano's indigo-dyeing/adire heritage)
+*/
+
+:root {
+  /* Core brand colors */
+  --color-indigo: #2c3e6b;       /* primary — nav, links, CTAs */
+  --color-indigo-deep: #1a2340;  /* dark backgrounds — hero, footer */
+  --color-indigo-tint: #e8ecf5;  /* light backgrounds — about/section fills */
+
+  --color-gold: #d4a03c;         /* accent — buttons, highlights */
+  --color-gold-soft: #e8c877;    /* softer accent — on dark backgrounds */
+
+  /* Neutrals */
+  --color-ink: #1a1f30;          /* body text */
+  --color-paper: #fdfbf6;        /* page background */
+  --color-paper-tint: #f1efe6;   /* subtle section fill on light bg */
+  --color-line: rgba(26, 31, 48, 0.12); /* hairline borders/dividers */
+}
