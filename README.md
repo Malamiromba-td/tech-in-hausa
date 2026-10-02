@@ -90,10 +90,6 @@ sequenceDiagram
 *   Sanity CMS
 *   PortableText
 
-## Contributing
-
-Contributions are welcome. Please ensure that your code follows the existing style guidelines and passes all linting checks before submitting a pull request. We recommend opening an issue to discuss proposed changes before starting work on major features.
-
 ## Author Info
 
 *   **Founder**: Ibrahim Zubairu (Malamiromba)
