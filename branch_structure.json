@@ -1,0 +1,24 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "V1",
+    "V2",
+    "main",
+    "revamp_1",
+    "zip-update"
+  ],
+  "parent": {
+    "V1": "main",
+    "V2": "main",
+    "main": null,
+    "revamp_1": "main",
+    "zip-update": "main"
+  },
+  "order": [
+    "main",
+    "V1",
+    "V2",
+    "revamp_1",
+    "zip-update"
+  ]
+}
