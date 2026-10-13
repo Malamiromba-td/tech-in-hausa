@@ -1,4 +1,9 @@
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+
 export default function About() {
+  const t = useTranslations("about");
+
   return (
     <section className="bg-indigo-tint">
       <div className="mx-auto grid max-w-6xl items-center gap-15 px-5 md:px-8 py-14 md:py-22 md:grid-cols-[0.85fr_1.15fr]">
@@ -38,28 +43,20 @@ export default function About() {
         </div>
         <div>
           <div className="mb-3.5 text-[14.5px] font-medium text-indigo">
-            Manufa
+            {t("eyebrow")}
           </div>
           <h2 className="mb-4.5 max-w-lg font-display text-[30px] leading-tight text-indigo-deep">
-            Cire shingen da ke tsakanin fasaha da al&apos;ummar Hausa.
+            {t("heading")}
           </h2>
           <p className="mb-3.5 max-w-lg text-[15.5px] text-ink/70">
-            TechInHausa is an initiative founded by Ibrahim Zubairu
-            (Malamiromba) to make programming, AI, and digital skills
-            accessible in Hausa — the language spoken, not the one that
-            gets translated later.
+            {t("body")}
           </p>
-          <p className="mb-3.5 max-w-lg text-[15.5px] text-ink/70">
-            Since launch, the initiative has produced 48+ educational
-            videos and reached learners across nine countries, all
-            delivered free of charge.
-          </p>
-          <a
+          <Link
             href="/game-da-mu"
             className="mt-2.5 inline-block border-b-[1.5px] border-gold pb-0.5 text-[14.5px] font-semibold text-indigo"
           >
-            Karanta ƙarin bayani
-          </a>
+            {t("readMore")}
+          </Link>
         </div>
       </div>
     </section>

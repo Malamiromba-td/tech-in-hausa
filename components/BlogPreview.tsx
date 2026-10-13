@@ -1,7 +1,9 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { getAllPosts } from "@/lib/blog";
 
 export default async function BlogPreview() {
+  const t = await getTranslations("blogPreview");
   const posts = (await getAllPosts()).slice(0, 3);
 
   if (posts.length === 0) return null;
@@ -11,11 +13,10 @@ export default async function BlogPreview() {
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="mb-11 flex flex-wrap items-end justify-between gap-6">
           <h2 className="font-display text-[32px] text-indigo-deep">
-            Daga Blog
+            {t("heading")}
           </h2>
           <p className="max-w-[340px] text-[15px] text-ink/60">
-            Rubuce-rubuce game da fasaha, AI, da ci gaban dijital — a
-            harshen Hausa.
+            {t("subhead")}
           </p>
         </div>
 
@@ -44,7 +45,7 @@ export default async function BlogPreview() {
             href="/blog"
             className="rounded-[3px] border border-indigo/25 px-6 py-3 text-[14.5px] font-medium text-indigo hover:bg-paper"
           >
-            Duba Duk Labarai
+            {t("viewAll")}
           </Link>
         </div>
       </div>

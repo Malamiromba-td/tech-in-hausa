@@ -8,7 +8,7 @@ import config from "@/sanity.config";
 // with ssr:false ensures it only ever runs in the browser.
 const NextStudio = dynamic(
   () => import("next-sanity/studio").then((mod) => mod.NextStudio),
-  { ssr: false },
+  { ssr: false }
 );
 
 export default function StudioClient() {
