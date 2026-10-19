@@ -8,19 +8,19 @@
 export const SITE_URL = "https://www.techinhausa.org";
 export const SITE_NAME = "TechInHausa";
 export const SITE_DESCRIPTION =
-  "TechInHausa brings technology and AI education to Hausa speakers worldwide, programming, artificial intelligence, and modern tech taught clearly, in Hausa.";
+  "TechInHausa brings technology and AI education to Hausa speakers worldwide — programming, artificial intelligence, and modern tech taught clearly, in Hausa.";
 export const TWITTER_HANDLE = "@techinHausa";
 
-// Real contact + social links, pulled from the existing site's footer.
+// Real contact + social links — the earlier partials/footer.php file
+// turned out to be outdated; this reflects the actual live footer
+// (rendered output) across the site, which is authoritative.
 export const CONTACT_EMAIL = "info@techinhausa.com.ng";
-export const CONTACT_PHONE = "+2348000000000"; // placeholder in the old site too — confirm real number
 export const BUSINESS_EMAIL = "ibrahim@Malamiromba.com";
 
 export const OFFICES = [
   {
     name: "Kano Office",
-    address:
-      "11B Hawan Dawaki Layout, Off Buk Newsite, Gwarzo Road, Kano, Nigeria",
+    address: "11B Hawan Dawaki Layout, Off Buk Newsite, Gwarzo Road, Kano, Nigeria",
   },
   {
     name: "Lagos Office",
@@ -33,6 +33,8 @@ export const WORKING_HOURS = [
   { days: "Saturday", hours: "10:00 – 14:00" },
 ];
 
+// Real handles from the live site — no Telegram (that was only in the
+// older footer.php partial), LinkedIn added.
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/share/14Y2xAW4kXc/",
   linkedin: "https://www.linkedin.com/in/ibrahimbaba",
@@ -41,12 +43,3 @@ export const SOCIAL_LINKS = {
   youtube: "https://youtube.com/@Malamiromba",
   github: "https://github.com/ibbaba",
 };
-
-// export const SOCIAL_LINKS = {
-//   youtube: "https://www.youtube.com/@techinHausa",
-//   facebook: "https://www.facebook.com/techinHausa",
-//   instagram: "https://www.instagram.com/techinHausa",
-//   twitter: "https://twitter.com/techinHausa",
-//   telegram: "https://t.me/techinHausa",
-//   github: "https://github.com/techinHausa",
-// };

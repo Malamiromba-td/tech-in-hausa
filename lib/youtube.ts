@@ -29,23 +29,26 @@ const FALLBACK_VIDEOS: Video[] = [
   {
     id: "fallback-1",
     title: "Me ne ChatGPT? Bayani a Harshen Hausa",
-    description: "Koyi yadda ChatGPT ke aiki da yadda ake amfani da shi.",
+    description:
+      "Koyi yadda ChatGPT ke aiki, yadda ake amfani da shi, da kuma yadda zai taimaka m...",
     thumbnail: "",
     publishedAt: new Date().toISOString(),
     duration: "18:22",
   },
   {
     id: "fallback-2",
-    title: "Python Programming: Darasi na Farko",
-    description: "Fara koyon harshen Python daga farko, sannu a hankali.",
+    title: "Python Programming: Darasi na Farko a Hausa",
+    description:
+      "Fara koyon harshen Python daga farko. Darussa an tsara su ne domin mutanen da ba...",
     thumbnail: "",
     publishedAt: new Date().toISOString(),
     duration: "22:10",
   },
   {
     id: "fallback-3",
-    title: "Tsaro a Yanar Gizo: Kare Bayananku",
-    description: "Muhimman shawarwari game da tsaro da kariyar bayanai.",
+    title: "Tsaro a Yanar Gizo: Kare Bayananku Online",
+    description:
+      "Muhimman shawarwari game da tsaro a intanet. Koyi yadda ake kare password da guj...",
     thumbnail: "",
     publishedAt: new Date().toISOString(),
     duration: "15:45",
@@ -67,6 +70,49 @@ const FALLBACK_VIDEOS: Video[] = [
     publishedAt: new Date().toISOString(),
     duration: "13:49",
   },
+  {
+    id: "fallback-6",
+    title: "Web Development Darasi: HTML da CSS daga Farko",
+    description:
+      "Fara gina shafukan intanet. Koyi HTML da CSS daga farko-farko cikin harshen Haus...",
+    thumbnail: "",
+    publishedAt: new Date().toISOString(),
+    duration: "25:18",
+  },
+  {
+    id: "fallback-7",
+    title: "Data Science: Kimiyyar Bayanai a Hausa",
+    description:
+      "Menene Data Science? Koyi game da yadda ake tattara bayanai, nazari su, da kuma ...",
+    thumbnail: "",
+    publishedAt: new Date().toISOString(),
+    duration: "19:07",
+  },
+  {
+    id: "fallback-8",
+    title: "Breaking into tech in Hausa: Shiga Fasaha",
+    description: "Breaking into tech in Hausa: Shiga Fasaha",
+    thumbnail: "",
+    publishedAt: new Date().toISOString(),
+    duration: "13:40",
+  },
+  {
+    id: "fallback-9",
+    title: "3 Most In-Demand Skills in 2026",
+    description: "3 Most In-Demand Skills in 2026",
+    thumbnail: "",
+    publishedAt: new Date().toISOString(),
+    duration: "13:49",
+  },
+  {
+    id: "fallback-10",
+    title: "Neural Networks: Yadda Kwakwalwar AI ke Aiki",
+    description:
+      "Bayani mai saukaka game da Neural Networks da Deep Learning. Koyi yadda kwakwalw...",
+    thumbnail: "",
+    publishedAt: new Date().toISOString(),
+    duration: "23:54",
+  },
 ];
 
 /**
@@ -86,7 +132,7 @@ export async function getLatestVideos(limit = 12): Promise<Video[]> {
     // Step 1: resolve the channel's "uploads" playlist ID
     const channelRes = await fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${apiKey}`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 3600 } }
     );
     const channelData = await channelRes.json();
     const uploadsPlaylistId =
@@ -97,15 +143,12 @@ export async function getLatestVideos(limit = 12): Promise<Video[]> {
     // Step 2: get the latest videos from that playlist
     const playlistRes = await fetch(
       `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=${limit}&key=${apiKey}`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 3600 } }
     );
     const playlistData = await playlistRes.json();
 
     const videoIds: string[] = (playlistData?.items ?? [])
-      .map(
-        (item: { snippet?: { resourceId?: { videoId?: string } } }) =>
-          item.snippet?.resourceId?.videoId,
-      )
+      .map((item: { snippet?: { resourceId?: { videoId?: string } } }) => item.snippet?.resourceId?.videoId)
       .filter(Boolean);
 
     if (videoIds.length === 0) return FALLBACK_VIDEOS;
@@ -113,9 +156,9 @@ export async function getLatestVideos(limit = 12): Promise<Video[]> {
     // Step 3: get durations for those videos
     const detailsRes = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds.join(
-        ",",
+        ","
       )}&key=${apiKey}`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 3600 } }
     );
     const detailsData = await detailsRes.json();
 
@@ -139,7 +182,7 @@ export async function getLatestVideos(limit = 12): Promise<Video[]> {
           "",
         publishedAt: item.snippet.publishedAt,
         duration: formatDuration(item.contentDetails.duration),
-      }),
+      })
     );
 
     return videos.length > 0 ? videos : FALLBACK_VIDEOS;

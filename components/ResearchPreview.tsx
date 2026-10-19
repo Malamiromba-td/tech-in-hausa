@@ -1,7 +1,9 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { papers } from "@/lib/research";
 
 export default function ResearchPreview() {
+  const t = useTranslations("researchPreview");
   const preview = papers.slice(0, 2);
 
   if (preview.length === 0) return null;
@@ -11,10 +13,10 @@ export default function ResearchPreview() {
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <div className="mb-9">
           <h2 className="mb-2 font-display text-[32px] text-indigo-deep">
-            Bincike
+            {t("heading")}
           </h2>
           <p className="max-w-lg text-[15px] text-ink/60">
-            Bincike da takardun ilimi da suka fito daga aikin TechInHausa.
+            {t("subhead")}
           </p>
         </div>
 
@@ -37,7 +39,7 @@ export default function ResearchPreview() {
             href="/bincike"
             className="rounded-[3px] border border-indigo/25 px-6 py-3 text-[14.5px] font-medium text-indigo hover:bg-indigo-tint"
           >
-            Duba Duk Bincike
+            {t("viewAll")}
           </Link>
         </div>
       </div>

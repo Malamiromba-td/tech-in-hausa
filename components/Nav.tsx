@@ -1,18 +1,21 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
-
-const links = [
-  { href: "/", label: "Gida" },
-  { href: "/bidiyo", label: "Bidiyo" },
-  { href: "/blog", label: "Blog" },
-  { href: "/bincike", label: "Bincike" },
-  { href: "/game-da-mu", label: "Game da mu" },
-];
+import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function Nav() {
+  const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "/", label: t("home") },
+    { href: "/bidiyo", label: t("videos") },
+    { href: "/blog", label: t("blog") },
+    { href: "/bincike", label: t("research") },
+    { href: "/game-da-mu", label: t("about") },
+  ];
 
   return (
     <nav className="border-b border-line bg-paper">
@@ -44,33 +47,37 @@ export default function Nav() {
             href="/tuntube"
             className="rounded-[3px] bg-indigo px-5 py-2.5 font-medium text-paper"
           >
-            Tuntuɓe mu
+            {t("cta")}
           </Link>
+          <LocaleSwitcher />
         </div>
 
         {/* Mobile menu button */}
-        <button
-          aria-label={open ? "Rufe menu" : "Buɗe menu"}
-          onClick={() => setOpen(!open)}
-          className="flex h-9 w-9 items-center justify-center md:hidden"
-        >
-          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
-            {open ? (
-              <path
-                d="M6 6L18 18M18 6L6 18"
-                stroke="var(--color-indigo-deep)"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            ) : (
-              <>
-                <path d="M4 7H20" stroke="var(--color-indigo-deep)" strokeWidth="1.8" strokeLinecap="round" />
-                <path d="M4 12H20" stroke="var(--color-indigo-deep)" strokeWidth="1.8" strokeLinecap="round" />
-                <path d="M4 17H20" stroke="var(--color-indigo-deep)" strokeWidth="1.8" strokeLinecap="round" />
-              </>
-            )}
-          </svg>
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <LocaleSwitcher />
+          <button
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen(!open)}
+            className="flex h-9 w-9 items-center justify-center"
+          >
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
+              {open ? (
+                <path
+                  d="M6 6L18 18M18 6L6 18"
+                  stroke="var(--color-indigo-deep)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              ) : (
+                <>
+                  <path d="M4 7H20" stroke="var(--color-indigo-deep)" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M4 12H20" stroke="var(--color-indigo-deep)" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M4 17H20" stroke="var(--color-indigo-deep)" strokeWidth="1.8" strokeLinecap="round" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile dropdown panel */}
@@ -91,7 +98,7 @@ export default function Nav() {
             onClick={() => setOpen(false)}
             className="mt-2 rounded-[3px] bg-indigo px-4 py-3 text-center font-medium text-paper"
           >
-            Tuntuɓe mu
+            {t("cta")}
           </Link>
         </div>
       )}
