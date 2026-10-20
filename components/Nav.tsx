@@ -34,14 +34,15 @@ export default function Nav() {
           className="flex items-center gap-2.5 font-display text-[18px] font-semibold text-indigo-deep md:text-[19px]"
           onClick={() => setOpen(false)}
         >
-          <svg viewBox="0 0 26 26" className="h-6 w-6 shrink-0 md:h-6.5 md:w-6.5" fill="none">
+          {/*<svg viewBox="0 0 26 26" className="h-6 w-6 shrink-0 md:h-6.5 md:w-6.5" fill="none">
             <path
               d="M13 1L24 13L13 25L2 13L13 1Z"
               stroke="var(--color-gold)"
               strokeWidth="1.6"
             />
             <path d="M13 7L19 13L13 19L7 13L13 7Z" fill="var(--color-indigo)" />
-          </svg>
+          </svg>*/}
+          <img src="/TECHINHAUSA NEW LOGO 1.jpg" alt="TECHINHAUSA NEW LOGO" aria-hidden="true" className="h-6 w-6 shrink-0 object-contain md:h-6.5 md:w-6.5" />
           TechInHausa
         </Link>
 
