@@ -61,7 +61,7 @@ export default function Nav() {
           <LocaleSwitcher />
         </div>*/}
 
-          <div className="hidden items-center gap-8 text-[14.5px] md:flex">
+        {/* <div className="hidden items-center gap-8 text-[14.5px] md:flex">
   {links.map((l) => {
     const active = isActive(l.href);
 
@@ -79,8 +79,37 @@ export default function Nav() {
         {l.label}
       </Link>
     );
-  })}
+  })}*/}
 
+            {/* new */}
+            <div className="hidden items-center gap-8 text-[14.5px] md:flex">
+  {links.map((l) => {
+    const active = isActive(l.href);
+
+    return (
+      <Link
+        key={l.href}
+        href={l.href}
+        aria-current={active ? "page" : undefined}
+        className={`group relative py-2 transition-colors duration-300 ${
+          active
+            ? "font-semibold text-indigo"
+            : "text-ink/75 hover:text-indigo"
+        }`}
+      >
+        {l.label}
+
+        <span
+          className={`absolute inset-x-0 bottom-0 h-[2px] origin-left bg-[var(--color-gold)] transition-transform duration-300 ease-out ${
+            active
+              ? "scale-x-100"
+              : "scale-x-0 group-hover:scale-x-100"
+          }`}
+        />
+      </Link>
+    );
+  })}
+                
   <Link
     href="/tuntube"
     aria-current={isActive("/tuntube") ? "page" : undefined}
@@ -148,7 +177,9 @@ export default function Nav() {
       )}*/}
 
       {open && (
-  <div className="flex flex-col gap-1 border-t border-line px-5 pb-5 pt-2 md:hidden">
+  <div className="flex animate-in fade-in slide-in-from-top-2
+    flex-col gap-1 border-t border-line px-5 pb-5 pt-2
+    duration-200 md:hidden">
     {links.map((l) => {
       const active = isActive(l.href);
 
