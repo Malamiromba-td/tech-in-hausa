@@ -11,6 +11,7 @@ import {
   TWITTER_HANDLE,
   SOCIAL_LINKS,
 } from "@/lib/site";
+import PageTransition from "@/components/PageTransition";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -101,8 +102,10 @@ export default async function LocaleLayout({
         />
       </head>
       <body suppressHydrationWarning>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
-      </body>
+  <NextIntlClientProvider>
+    <PageTransition>{children}</PageTransition>
+  </NextIntlClientProvider>
+</body>
     </html>
   );
 }

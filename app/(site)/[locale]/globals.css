@@ -49,3 +49,43 @@ body {
   text-decoration: underline;
   text-decoration-color: var(--color-gold);
 }
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-menu-enter {
+  animation: menu-enter 200ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-menu-enter {
+    animation: none;
+  }
+}
+
+.page-transition {
+  opacity: 1;
+  transition: opacity 220ms ease-in-out;
+}
+
+.page-transition.page-hidden {
+  opacity: 0;
+}
+
+.page-transition.page-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    transition: none;
+  }
+}
