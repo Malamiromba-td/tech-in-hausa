@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function Nav() {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const links = [
@@ -16,6 +17,14 @@ export default function Nav() {
     { href: "/bincike", label: t("research") },
     { href: "/game-da-mu", label: t("about") },
   ];
+
+  const isActive = (href: string) => {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+};
 
   return (
     <nav className="border-b border-line bg-paper">
@@ -37,7 +46,7 @@ export default function Nav() {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-8 text-[14.5px] md:flex">
+        {/*  <div className="hidden items-center gap-8 text-[14.5px] md:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="opacity-75 hover:opacity-100">
               {l.label}
@@ -50,7 +59,42 @@ export default function Nav() {
             {t("cta")}
           </Link>
           <LocaleSwitcher />
-        </div>
+        </div>*/}
+
+          <div className="hidden items-center gap-8 text-[14.5px] md:flex">
+  {links.map((l) => {
+    const active = isActive(l.href);
+
+    return (
+      <Link
+        key={l.href}
+        href={l.href}
+        aria-current={active ? "page" : undefined}
+        className={`transition-colors ${
+          active
+            ? "font-semibold text-indigo"
+            : "text-ink/75 hover:text-indigo"
+        }`}
+      >
+        {l.label}
+      </Link>
+    );
+  })}
+
+  <Link
+    href="/tuntube"
+    aria-current={isActive("/tuntube") ? "page" : undefined}
+    className={`rounded-[3px] px-5 py-2.5 font-medium transition-colors ${
+      isActive("/tuntube")
+        ? "bg-indigo-deep text-paper"
+        : "bg-indigo text-paper hover:bg-indigo-deep"
+    }`}
+  >
+    {t("cta")}
+  </Link>
+
+  <LocaleSwitcher />
+</div>
 
         {/* Mobile menu button */}
         <div className="flex items-center gap-3 md:hidden">
@@ -81,7 +125,7 @@ export default function Nav() {
       </div>
 
       {/* Mobile dropdown panel */}
-      {open && (
+      {/*{open && (
         <div className="flex flex-col gap-1 border-t border-line px-5 pb-5 pt-2 md:hidden">
           {links.map((l) => (
             <Link
@@ -101,7 +145,44 @@ export default function Nav() {
             {t("cta")}
           </Link>
         </div>
-      )}
+      )}*/}
+
+      {open && (
+  <div className="flex flex-col gap-1 border-t border-line px-5 pb-5 pt-2 md:hidden">
+    {links.map((l) => {
+      const active = isActive(l.href);
+
+      return (
+        <Link
+          key={l.href}
+          href={l.href}
+          onClick={() => setOpen(false)}
+          aria-current={active ? "page" : undefined}
+          className={`rounded-[3px] border-l-2 px-3 py-3 text-[15px] transition-colors ${
+            active
+              ? "border-indigo bg-paper-tint font-semibold text-indigo"
+              : "border-transparent text-ink/80 active:bg-paper-tint"
+          }`}
+        >
+          {l.label}
+        </Link>
+      );
+    })}
+
+    <Link
+      href="/tuntube"
+      onClick={() => setOpen(false)}
+      aria-current={isActive("/tuntube") ? "page" : undefined}
+      className={`mt-2 rounded-[3px] px-4 py-3 text-center font-medium text-paper ${
+        isActive("/tuntube")
+          ? "bg-indigo-deep"
+          : "bg-indigo hover:bg-indigo-deep"
+      }`}
+    >
+      {t("cta")}
+    </Link>
+  </div>
+)}
     </nav>
   );
 }
