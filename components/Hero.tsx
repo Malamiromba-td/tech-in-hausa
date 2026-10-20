@@ -60,7 +60,7 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-        <div className="hidden font-display text-[15px] italic leading-loose text-gold-soft/85 md:block md:justify-self-end md:text-right">
+        {/* <div className="hidden font-display text-[15px] italic leading-loose text-gold-soft/85 md:block md:justify-self-end md:text-right">
           Kirkirariyar Basira
           <br />
           Giza-Gizan Sadarwa
@@ -68,7 +68,7 @@ export default function Hero() {
           Fasahar Dijital
           <br />
           Zubin Kirkirah
-        </div>
+        </div>*/}
       </div>
     </header>
   );
