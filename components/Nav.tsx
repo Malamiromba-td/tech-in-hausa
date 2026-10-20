@@ -190,9 +190,9 @@ export default function Nav() {
           href={l.href}
           onClick={() => setOpen(false)}
           aria-current={active ? "page" : undefined}
-          className={`rounded-[3px] border-l-2 px-3 py-3 text-[15px] transition-colors ${
+          className={`rounded-[3px] px-3 py-3 text-[15px] transition-colors ${
             active
-              ? "border-indigo bg-paper-tint font-semibold text-indigo"
+              ? " bg-paper-tint font-semibold text-indigo"
               : "border-transparent text-ink/80 active:bg-paper-tint"
           }`}
         >
