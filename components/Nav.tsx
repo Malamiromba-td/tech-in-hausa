@@ -42,7 +42,7 @@ export default function Nav() {
             />
             <path d="M13 7L19 13L13 19L7 13L13 7Z" fill="var(--color-indigo)" />
           </svg>*/}
-          <img src="/TECHINHAUSA NEW LOGO 1.jpg" alt="TECHINHAUSA NEW LOGO" aria-hidden="true" className="h-6 w-6 shrink-0 object-contain md:h-6.5 md:w-6.5" />
+          <img src="/TECHINHAUSA NEW LOGO 1.jpg" alt="TECHINHAUSA NEW LOGO" aria-hidden="true" className="h-8 w-8 shrink-0 object-contain md:h-8.5 md:w-8.5" />
           TechInHausa
         </Link>
 
