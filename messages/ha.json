@@ -12,9 +12,9 @@
     "kicker": "AI · Fasaha · Ilimi",
     "headlinePre": "Koyar da makoma a",
     "headlineEmphasis": "harshen mutane",
-    "subhead": "TechInHausa wani yunkuri ne da ke mayar da hankali kan sanya fasaha abin fahimta, amfani, da riba ga masu jin Hausa — musamman wadanda aka bari a baya a tattalin arzikin dijital. Wani shiri ne na ilimi daga Ibrahim Zubairu (Malamiromba), yana hadar da mutane da fasahar zamani ta hanyar harshe.",
-    "watchVideos": "Kalli Bidiyo",
-    "aboutMalamiromba": "Game da Malamiromba"
+    "subhead/": "TechInHausa wani yunkuri ne da ke mayar da hankali kan sanya fasaha abin fahimta, amfani, da riba ga masu jin Hausa — musamman wadanda aka bari a baya a tattalin arzikin dijital. Wani shiri ne na ilimi daga Ibrahim Zubairu (Malamiromba), yana hadar da mutane da fasahar zamani ta hanyar harshe.",
+    "watchVideos/": "Kalli Bidiyo",
+    "aboutMalamiromba/": "Game da Malamiromba"
   },
   "stats": {
     "hours": "Sa'o'in Abun Ciki",
@@ -25,43 +25,43 @@
   },
   "videos": {
     "heading": "Bidiyo Jagoranci",
-    "subhead": "Sabbin kuma mafi shahara darussa, a harshen Hausa.",
-    "viewAll": "Duba Duk Bidiyo"
+    "subhead/": "Sabbin kuma mafi shahara darussa, a harshen Hausa.",
+    "viewAll/": "Duba Duk Bidiyo"
   },
   "initiative": {
     "tag": "Wani shiri na ilimi daga Ibrahim Zubairu (Malamiromba) yana hadar da mutane da fasahar zamani ta hanyar harshe.",
-    "p1": "TechInHausa (wanda ake kira Hausa AI ko AI in Hausa) wani shiri ne na farko-farko na ilimin dijital da Ibrahim Zubairu (Malamiromba) ya kafa. Shirin yana mayar da hankali kan sanya fasahar zamani — ciki har da coding, kirkirariyar basira, da kwarewar dijital — abin fahimta da amfani ga masu jin Hausa a duniya.",
-    "p2": "An tsara shi domin magance gibin da ke tsakanin sabbin fasahohi da samun damar harshe, TechInHausa yana kawo abun ciki na ilimi mai sauki a Hausa da Turanci mai sauki, yana ba masu koyon fasaha na farko damar shiga tattalin arzikin dijital cikin aminci.",
-    "p3": "Tun bayan kaddamarwa, shirin ya samar da bidiyo sama da 48 na ilimi, wanda ya kai sa'o'i sama da 200 na darussa. Wadannan abubuwa sun hada da fage-fage dabam-dabam — daga kwarewar dijital irin su amfani da imel da coding na farko, zuwa manyan ra'ayoyi kamar Large Language Models, neural networks, da generative AI.",
-    "p4": "Zuwa yanzu, TechInHausa ya samar da ganuwa sama da miliyan 3 a kasashe sama da 9, yana nuna karfin isa da muhimmanci a tsakanin al'ummomin fasaha masu tasowa.",
-    "p5": "Ana isar da dukkan abun ciki kyauta, yana karfafa kudurin shirin na hadawa da adalci wajen samun ilimin fasaha.",
-    "p6": "Baya ga kirkirar abun ciki, TechInHausa yana aiki a matsayin babban yanayin ci gaban dijital — yana rufe gibin ilimi, gina kwarin gwiwa, da bude hanyoyi na ainihi domin masu koyo su shiga tattalin arzikin dijital na duniya.",
-    "sdg": "Wannan shiri yana ba da gudunmawa ga Manufar Ci Gaba Mai Dorewa ta Majalisar Dinkin Duniya ta 4 (Ingantaccen Ilimi), yana nuna yadda fasaha ke taimakawa adana al'ada yayin da take karfafa al'ummomi a duniya."
+    "p1/": "TechInHausa (wanda ake kira Hausa AI ko AI in Hausa) wani shiri ne na farko-farko na ilimin dijital da Ibrahim Zubairu (Malamiromba) ya kafa. Shirin yana mayar da hankali kan sanya fasahar zamani — ciki har da coding, kirkirariyar basira, da kwarewar dijital — abin fahimta da amfani ga masu jin Hausa a duniya.",
+    "p2/": "An tsara shi domin magance gibin da ke tsakanin sabbin fasahohi da samun damar harshe, TechInHausa yana kawo abun ciki na ilimi mai sauki a Hausa da Turanci mai sauki, yana ba masu koyon fasaha na farko damar shiga tattalin arzikin dijital cikin aminci.",
+    "p3/": "Tun bayan kaddamarwa, shirin ya samar da bidiyo sama da 48 na ilimi, wanda ya kai sa'o'i sama da 200 na darussa. Wadannan abubuwa sun hada da fage-fage dabam-dabam — daga kwarewar dijital irin su amfani da imel da coding na farko, zuwa manyan ra'ayoyi kamar Large Language Models, neural networks, da generative AI.",
+    "p4/": "Zuwa yanzu, TechInHausa ya samar da ganuwa sama da miliyan 3 a kasashe sama da 9, yana nuna karfin isa da muhimmanci a tsakanin al'ummomin fasaha masu tasowa.",
+    "p5/": "Ana isar da dukkan abun ciki kyauta, yana karfafa kudurin shirin na hadawa da adalci wajen samun ilimin fasaha.",
+    "p6/": "Baya ga kirkirar abun ciki, TechInHausa yana aiki a matsayin babban yanayin ci gaban dijital — yana rufe gibin ilimi, gina kwarin gwiwa, da bude hanyoyi na ainihi domin masu koyo su shiga tattalin arzikin dijital na duniya.",
+    "sdg/": "Wannan shiri yana ba da gudunmawa ga Manufar Ci Gaba Mai Dorewa ta Majalisar Dinkin Duniya ta 4 (Ingantaccen Ilimi), yana nuna yadda fasaha ke taimakawa adana al'ada yayin da take karfafa al'ummomi a duniya."
   },
   "about": {
     "eyebrow": "Manufa",
     "heading": "Kawo fasaha ga kowane mai jin Hausa",
-    "body": "Cire shingen da ke tsakanin fasaha da al'ummar Hausa ta hanyar sanya fasaha mai sauki, amfani, da dacewa ga talakawa.",
+    "body/": "Cire shingen da ke tsakanin fasaha da al'ummar Hausa ta hanyar sanya fasaha mai sauki, amfani, da dacewa ga talakawa.",
     "readMore": "Karanta Kari"
   },
   "mission": {
     "missionLabel": "Manufa",
     "missionHeading": "Kawo fasaha ga kowane mai jin Hausa",
-    "missionBody": "Cire shingen da ke tsakanin fasaha da al'ummar Hausa ta hanyar sanya fasaha mai sauki, amfani, da dacewa ga talakawa.",
+    "missionBody/": "Cire shingen da ke tsakanin fasaha da al'ummar Hausa ta hanyar sanya fasaha mai sauki, amfani, da dacewa ga talakawa.",
     "visionLabel": "Hangen Nesa",
     "visionHeading": "Masu jin Hausa a gaban tattalin arzikin dijital",
-    "visionBody": "Ganin masu jin Hausa ba kawai a hade su a tattalin arzikin dijital ba, har ma su jagoranta kuma su siffanta shi."
+    "visionBody/": "Ganin masu jin Hausa ba kawai a hade su a tattalin arzikin dijital ba, har ma su jagoranta kuma su siffanta shi."
   },
   "founder": {
     "eyebrow": "Mutumin da ke Bayansa",
     "heading": "Game da Ibrahim Zubairu — Malamiromba",
-    "p1": "Ibrahim Zubairu (Malamiromba) malamin fasaha ne dan Najeriya kuma mai gina al'umma, wanda ke mayar da hankali kan sanya fasahar zamani abin isa ga al'ummar Hausa. Ya koyar kuma ya jagoranci dubban daliban koyo a Arewacin Najeriya da wajenta, yana taimaka musu su fahimci kuma su yi amfani da kayan aikin dijital, AI, da kwarewar fasaha a rayuwarsu ta yau da kullum.",
-    "p2": "Baya ga koyarwa, Ibrahim yana ba da shawarwari kan ilimin AI da ci gaban iyawar fasaha a al'ummomin da ba a kula da harshensu ba. Ya yi imani cewa son sanin fasaha abu ne na duniya baki daya — abin da yake hana shi sau da yawa shi ne samun dama da fahimta. Wannan dandali shi ne nuni da wannan imani: sanya fasaha mai sauki, mai dacewa, kuma mai amfani ga mutane da yawa.",
+    "p1/": "Ibrahim Zubairu (Malamiromba) malamin fasaha ne dan Najeriya kuma mai gina al'umma, wanda ke mayar da hankali kan sanya fasahar zamani abin isa ga al'ummar Hausa. Ya koyar kuma ya jagoranci dubban daliban koyo a Arewacin Najeriya da wajenta, yana taimaka musu su fahimci kuma su yi amfani da kayan aikin dijital, AI, da kwarewar fasaha a rayuwarsu ta yau da kullum.",
+    "p2/": "Baya ga koyarwa, Ibrahim yana ba da shawarwari kan ilimin AI da ci gaban iyawar fasaha a al'ummomin da ba a kula da harshensu ba. Ya yi imani cewa son sanin fasaha abu ne na duniya baki daya — abin da yake hana shi sau da yawa shi ne samun dama da fahimta. Wannan dandali shi ne nuni da wannan imani: sanya fasaha mai sauki, mai dacewa, kuma mai amfani ga mutane da yawa.",
     "readMore": "Karanta Kari Game da Malamiromba"
   },
   "glossary": {
     "heading": "Ƙamus na Fasaha na TechInHausa",
-    "viewAll": "Duba Duk Ƙamus"
+    "viewAll/": "Duba Duk Ƙamus"
   },
   "blogPreview": {
     "heading": "Sabbin Abun Ciki daga Malamiromba",
@@ -80,7 +80,7 @@
     "consent": "Na yarda in karbi imel daga TechInHausa. Za ka iya soke kowane lokaci."
   },
   "footer": {
-    "description": "TechInHausa yana kawo ilimin fasaha da AI ga masu jin Hausa a duniya. Muna koyar da coding, kirkirariyar basira, da fasahar zamani a hanya mai sauki, a Hausa.",
+    "description/": "TechInHausa yana kawo ilimin fasaha da AI ga masu jin Hausa a duniya. Muna koyar da coding, kirkirariyar basira, da fasahar zamani a hanya mai sauki, a Hausa.",
     "quickLinks": "Manyan Hanyoyi",
     "visitUs": "Ziyarce Mu",
     "connect": "Haɗa da Malamiromba",
@@ -94,13 +94,13 @@
     },
     "blog": {
       "title": "Blog",
-      "description": "Labarai, darussa, da sabuntawa kan fasaha, AI, da kwarewar dijital.",
+      "description/": "Labarai, darussa, da sabuntawa kan fasaha, AI, da kwarewar dijital.",
       "heading": "Blog da Darussa",
       "empty": "Babu labarai tukuna — ka duba nan gaba."
     },
     "bincike": {
       "title": "Bincike",
-      "description": "Takardun bincike da gudunmawar ilimi kan fasaha, AI, da harshen Hausa.",
+      "description/": "Takardun bincike da gudunmawar ilimi kan fasaha, AI, da harshen Hausa.",
       "heading": "Bincike da Wallafe-wallafe",
       "subhead": "Takardun bincike da gudunmawar ilimi.",
       "readFull": "Karanta Cikakke (PDF)"
@@ -118,9 +118,9 @@
       "backgroundLabel": "01. Tarihi",
       "backgroundHeading": "Yadda Komai Ya Fara",
       "backgroundSubhead": "Daga tashar YouTube daya zuwa cikakken dandali na ilimi",
-      "backgroundP1": "Ibrahim Zubairu (Malamiromba) ne ya kafa TechInHausa, da nufin kawo ilimin fasaha da AI ga al'ummar Hausa a harshensu na asali.",
-      "backgroundP2": "Mun fara da bidiyo kadan kan coding kuma mun girma zuwa cikakken dandali na ilimi da ke bayar da darussa, rubuce-rubucen blog, labarai, da bincike a fage-fage da yawa na fasaha — duk kyauta, duk a Hausa.",
-      "backgroundP3": "Mun yi imani harshe bai kamata ya zama shinge ga ilimi ba. Shi ya sa muke kudurin bayyana ra'ayoyin fasaha a sauki kuma a bayyane, kullum a Hausa.",
+      "backgroundP1/": "Ibrahim Zubairu (Malamiromba) ne ya kafa TechInHausa, da nufin kawo ilimin fasaha da AI ga al'ummar Hausa a harshensu na asali.",
+      "backgroundP2/": "Mun fara da bidiyo kadan kan coding kuma mun girma zuwa cikakken dandali na ilimi da ke bayar da darussa, rubuce-rubucen blog, labarai, da bincike a fage-fage da yawa na fasaha — duk kyauta, duk a Hausa.",
+      "backgroundP3/": "Mun yi imani harshe bai kamata ya zama shinge ga ilimi ba. Shi ya sa muke kudurin bayyana ra'ayoyin fasaha a sauki kuma a bayyane, kullum a Hausa.",
       "purposeLabel": "02. Manufa",
       "purposeHeading": "Manufa da Hangen Nesa",
       "timelineLabel": "03. Tarihin Tafiya",
@@ -131,37 +131,37 @@
           "year": "2021",
           "title": "Gane Gibin",
           "subtitle": "Ganin gibin",
-          "body": "TechInHausa ta fara ne daga sauƙaƙen gane abu: mutane da yawa ana barin su a baya a tattalin arzikin dijital ba don ba su da iyawa ba, sai don ba a bayyana musu fasaha a hanyar da za su fahimta ba. Wannan shi ne farkon. Manufa ta bayyana: nemo hanyar rufe wannan gibi."
+          "body/": "TechInHausa ta fara ne daga sauƙaƙen gane abu: mutane da yawa ana barin su a baya a tattalin arzikin dijital ba don ba su da iyawa ba, sai don ba a bayyana musu fasaha a hanyar da za su fahimta ba. Wannan shi ne farkon. Manufa ta bayyana: nemo hanyar rufe wannan gibi."
         },
         {
           "year": "2022",
           "title": "Mataki na Farko",
           "subtitle": "Fada da labaran fasahar mu",
-          "body": "Mun fara kadan da bidiyo masu sauki, muna fasalta coding da kwarewar dijital a Hausa. Babu abu mai yawa, sai bayani mai bayyana. Ra'ayin yana da sauki: a sauƙaƙe. Haka ginshikinmu na farko ya fara: Malamiromba, fada da labaran fasaharmu, a harshenmu."
+          "body/": "Mun fara kadan da bidiyo masu sauki, muna fasalta coding da kwarewar dijital a Hausa. Babu abu mai yawa, sai bayani mai bayyana. Ra'ayin yana da sauki: a sauƙaƙe. Haka ginshikinmu na farko ya fara: Malamiromba, fada da labaran fasaharmu, a harshenmu."
         },
         {
           "year": "2023",
           "title": "Gina Hadin Kai",
           "subtitle": "Daga koyo kadai zuwa koyo tare",
-          "body": "Yayin da mutane da yawa suka fara shiga, abu daya ya bayyana: abun ciki kadai bai isa ba. Mutane na bukatar wurin yin tambaya, rabawa, da girma. Saboda haka muka fara gina al'umma a dandamali daban-daban — wurare da mutane za su iya koyo tare, ba a kebe ba. Wannan ya zama ginshikinmu na biyu: Skills Arewa, mai mayar da koyo na mutum daya zuwa girma tare."
+          "body/": "Yayin da mutane da yawa suka fara shiga, abu daya ya bayyana: abun ciki kadai bai isa ba. Mutane na bukatar wurin yin tambaya, rabawa, da girma. Saboda haka muka fara gina al'umma a dandamali daban-daban — wurare da mutane za su iya koyo tare, ba a kebe ba. Wannan ya zama ginshikinmu na biyu: Skills Arewa, mai mayar da koyo na mutum daya zuwa girma tare."
         },
         {
           "year": "2024",
           "title": "Zurfafa Bincike",
           "subtitle": "Daga sanin abu zuwa fahimtarsa",
-          "body": "Mun wuce bidiyo kadai zuwa rubutu, wasiƙun labarai, da cikakken abun ciki. Manufar ba kawai gabatar da fasaha ba ne, sai dai a taimaka wa mutane su fahimta sosai — daga asali zuwa abubuwa kamar AI."
+          "body/": "Mun wuce bidiyo kadai zuwa rubutu, wasiƙun labarai, da cikakken abun ciki. Manufar ba kawai gabatar da fasaha ba ne, sai dai a taimaka wa mutane su fahimta sosai — daga asali zuwa abubuwa kamar AI."
         },
         {
           "year": "2025",
           "title": "Gina Abin da Muke Bukata",
           "subtitle": "Daga abun ciki zuwa dandamali",
-          "body": "A wani lokaci, ya bayyana: idan har muna son fadada tasiri, abun ciki kadai bai isa ba. Muna bukatar tsarin aiki. Saboda haka muka fara gina dandamali da yanayin koyo da aka tsara domin mutane na ainihi da kalubale na ainihi, iyaka na ainihi, da manufofi na ainihi. Wannan ya zama ginshikinmu na uku: Software Solutions (TathSchool), muna gina abin da muke bukata domin koyo, girma, da fadadawa."
+          "body/": "A wani lokaci, ya bayyana: idan har muna son fadada tasiri, abun ciki kadai bai isa ba. Muna bukatar tsarin aiki. Saboda haka muka fara gina dandamali da yanayin koyo da aka tsara domin mutane na ainihi da kalubale na ainihi, iyaka na ainihi, da manufofi na ainihi. Wannan ya zama ginshikinmu na uku: Software Solutions (TathSchool), muna gina abin da muke bukata domin koyo, girma, da fadadawa."
         },
         {
           "year": "Yau",
           "title": "Yanayin da ke Girma",
           "subtitle": "Fiye da abun ciki kawai",
-          "body": "TechInHausa ta girma fiye da bidiyo ko rubuce-rubuce kawai. Yanzu yanayi ne da aka gina a kan abubuwa uku: Abun Ciki, sanya fasaha mai sauki da fahimta; Al'umma, taimaka wa mutane su girma tare; da Dandamali, kirkirar hanyoyin da aka tsara domin koyo da samun dama. A tafiyar, aikin ya sami karbuwa a manyan dandamali — amma mafi muhimmanci, yana ci gaba da girma da manufa daya bayyananne: sanya fasaha mai sauki, mai amfani, kuma mai dacewa ga mutane da yawa."
+          "body"/: "TechInHausa ta girma fiye da bidiyo ko rubuce-rubuce kawai. Yanzu yanayi ne da aka gina a kan abubuwa uku: Abun Ciki, sanya fasaha mai sauki da fahimta; Al'umma, taimaka wa mutane su girma tare; da Dandamali, kirkirar hanyoyin da aka tsara domin koyo da samun dama. A tafiyar, aikin ya sami karbuwa a manyan dandamali — amma mafi muhimmanci, yana ci gaba da girma da manufa daya bayyananne: sanya fasaha mai sauki, mai amfani, kuma mai dacewa ga mutane da yawa."
         }
       ],
       "structureLabel": "04. Tsarinmu",
@@ -185,15 +185,15 @@
         { "name": "Al'umma", "body": "Muna gina al'umma mai karfi na masu koyo da ke tallafawa juna kuma suke girma tare." }
       ],
       "ctaHeading": "Shiga Al'ummarmu",
-      "ctaBody": "Zama daya daga cikin dubban mutane da ke koyo daga gare mu kowace rana, kyauta, a Hausa.",
+      "ctaBody/": "Zama daya daga cikin dubban mutane da ke koyo daga gare mu kowace rana, kyauta, a Hausa.",
       "ctaWatch": "Kalli Bidiyo",
       "ctaContact": "Tuntuɓe Mu"
     },
     "tuntube": {
       "title": "Tuntuɓe Mu",
-      "description": "Za mu yi murna mu ji ra'ayinku, tambayoyinku, da shawarwarin hadin gwiwa.",
+      "description/": "Za mu yi murna mu ji ra'ayinku, tambayoyinku, da shawarwarin hadin gwiwa.",
       "heading": "Tuntuɓe Mu",
-      "subhead": "Za mu yi murna mu ji ra'ayinku, tambayoyinku, da shawarwarin hadin gwiwa.",
+      "subhead/": "Za mu yi murna mu ji ra'ayinku, tambayoyinku, da shawarwarin hadin gwiwa.",
       "detailsHeading": "Bayanan Tuntuɓar Mu",
       "workingHours": "Lokutan Aiki",
       "connect": "Haɗa da Malamiromba",
