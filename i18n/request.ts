@@ -11,11 +11,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
     : routing.defaultLocale;
 
   const targetMessages = (
-    await import(`../../messages/${locale}.json`)
+    await import(`../messages/${locale}.json`)
   ).default;
 
   const fallbackMessages = (
-    await import("../../messages/en.json")
+    await import("../messages/en.json")
   ).default;
 
   return {
