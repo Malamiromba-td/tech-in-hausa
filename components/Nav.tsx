@@ -177,7 +177,7 @@ export default function Nav() {
       )}*/}
 
       {open && (
-  <div className="flex animate-in fade-in slide-in-from-top-2
+  <div className="animate-menu-enter flex animate-in fade-in slide-in-from-top-2
     flex-col gap-1 border-t border-line px-5 pb-5 pt-2
     duration-200 md:hidden">
     {links.map((l) => {
