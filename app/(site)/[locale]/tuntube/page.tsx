@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { Mail, MapPin, Clock } from "lucide-react";
 import {
   BUSINESS_EMAIL,
@@ -133,54 +134,8 @@ export default async function TuntubePage({
             </div>
 
             {/* Form */}
-            <div>
-              <h2 className="mb-1 font-display text-[22px] text-indigo-deep">
-                {t("formHeading")}
-              </h2>
-              <p className="mb-6 text-[14.5px] text-ink/60">
-                {t("formSubhead")}
-              </p>
-
-              {/* Wired up to a real form handler (e.g. an API route +
-                  email service) once decided how submissions should be
-                  delivered. */}
-              <form className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  placeholder={t("namePlaceholder")}
-                  required
-                  className="rounded-[3px] border border-line bg-paper px-4 py-3.5 text-[14.5px] text-ink placeholder:text-ink/40"
-                />
-                <input
-                  type="email"
-                  placeholder={t("emailPlaceholder")}
-                  required
-                  className="rounded-[3px] border border-line bg-paper px-4 py-3.5 text-[14.5px] text-ink placeholder:text-ink/40"
-                />
-                <input
-                  type="text"
-                  placeholder={t("subjectPlaceholder")}
-                  required
-                  className="rounded-[3px] border border-line bg-paper px-4 py-3.5 text-[14.5px] text-ink placeholder:text-ink/40"
-                />
-                <textarea
-                  placeholder={t("messagePlaceholder")}
-                  required
-                  rows={5}
-                  className="rounded-[3px] border border-line bg-paper px-4 py-3.5 text-[14.5px] text-ink placeholder:text-ink/40"
-                />
-                <label className="flex items-start gap-2.5 text-[13.5px] text-ink/60">
-                  <input type="checkbox" required className="mt-0.5" />
-                  {t("consent")}
-                </label>
-                <button
-                  type="submit"
-                  className="mt-1 rounded-[3px] bg-indigo px-6 py-3.5 font-semibold text-paper"
-                >
-                  {t("send")}
-                </button>
-              </form>
-            </div>
+            <ContactForm /> 
+     
           </div>
         </div>
       </section>
