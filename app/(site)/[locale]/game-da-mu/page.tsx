@@ -57,9 +57,9 @@ export default async function GameDaMuPage({
       {/* Our Story */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-3.5 text-[14.5px] font-medium text-indigo">
+          {/* <div className="mb-3.5 text-[14.5px] font-medium text-indigo">
             {t("ourStoryLabel")}
-          </div>
+          </div>*/}
           <h1 className="mb-5 font-display text-[32px] leading-tight text-indigo-deep md:text-[42px]">
             {t("heading")}
           </h1>
@@ -83,9 +83,9 @@ export default async function GameDaMuPage({
       {/* Background */}
       <section className="bg-indigo-tint py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
+          {/* <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
             {t("backgroundLabel")}
-          </div>
+          </div>*/}
           <h2 className="mb-2 font-display text-[28px] text-indigo-deep">
             {t("backgroundHeading")}
           </h2>
@@ -101,9 +101,9 @@ export default async function GameDaMuPage({
       {/* Mission & Vision */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
+          {/*<div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
             {t("purposeLabel")}
-          </div>
+          </div>*/}
           <h2 className="mb-8 font-display text-[28px] text-indigo-deep">
             {t("purposeHeading")}
           </h2>
@@ -133,9 +133,9 @@ export default async function GameDaMuPage({
       {/* Timeline */}
       <section className="bg-indigo-tint py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
+          {/*<div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
             {t("timelineLabel")}
-          </div>
+          </div>*/}
           <h2 className="mb-2 font-display text-[28px] text-indigo-deep">
             {t("timelineHeading")}
           </h2>
@@ -167,9 +167,9 @@ export default async function GameDaMuPage({
       {/* Three Pillars */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
+          {/*<div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
             {t("structureLabel")}
-          </div>
+          </div>*/}
           <h2 className="mb-2 font-display text-[28px] text-indigo-deep">
             {t("structureHeading")}
           </h2>
@@ -207,9 +207,9 @@ export default async function GameDaMuPage({
       {/* Locations */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
+          {/*<div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
             {t("locationsLabel")}
-          </div>
+          </div>*/}
           <h2 className="mb-2 font-display text-[28px] text-indigo-deep">
             {t("locationsHeading")}
           </h2>
@@ -231,9 +231,9 @@ export default async function GameDaMuPage({
       {/* Values */}
       <section className="bg-indigo-tint py-14 md:py-20">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
-          <div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
+          {/*<div className="mb-2 text-[13px] font-semibold uppercase tracking-wide text-indigo">
             {t("principlesLabel")}
-          </div>
+          </div>*/}
           <h2 className="mb-2 font-display text-[28px] text-indigo-deep">
             {t("principlesHeading")}
           </h2>
