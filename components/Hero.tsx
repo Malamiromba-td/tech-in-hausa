@@ -6,7 +6,7 @@ export default function Hero() {
 
   return (
     <header className="relative overflow-hidden bg-indigo-deep text-paper">
-      <svg
+      {/*<svg
         className="pointer-events-none absolute inset-0 opacity-[0.14]"
         viewBox="0 0 400 400"
         preserveAspectRatio="xMaxYMax slice"
@@ -28,7 +28,16 @@ export default function Hero() {
           </pattern>
         </defs>
         <rect width="400" height="400" fill="url(#adire)" />
-      </svg>
+      </svg>*/}
+      <div
+  aria-hidden="true"
+  className="pointer-events-none absolute inset-0 opacity-[0.10]"
+  style={{
+    backgroundImage: "url('/TECHINHAUSA NEW LOGO PNG.png')",
+    backgroundRepeat: "repeat",
+    backgroundSize: "80px 80px",
+  }}
+/>
 
       <div className="relative mx-auto grid max-w-6xl items-end gap-10 px-5 pb-16 pt-16 md:gap-12 md:px-8 md:pb-24 md:pt-28 md:grid-cols-[1.15fr_0.85fr]">
         <div>
