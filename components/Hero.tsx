@@ -31,7 +31,7 @@ export default function Hero() {
       </svg>*/}
       <div
   aria-hidden="true"
-  className="pointer-events-none absolute inset-0 opacity-[0.80]"
+  className="pointer-events-none absolute inset-0 opacity-[0.30]"
   style={{
     backgroundImage: "url('/TECHINHAUSA NEW LOGO PNG.png')",
     backgroundRepeat: "repeat",
