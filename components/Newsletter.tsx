@@ -1,8 +1,17 @@
 
+
 "use client";
 
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
+
+const NEWSLETTER_API =
+  "https://api.techinhausa.org/newsletter.php";
+
+type NewsletterResponse = {
+  success?: boolean;
+  message?: string;
+};
 
 export default function Newsletter() {
   const t = useTranslations("newsletter");
@@ -22,16 +31,22 @@ export default function Newsletter() {
     setMessage("");
 
     try {
-      const response = await fetch("/api/newsletter", {
+      const response = await fetch(NEWSLETTER_API, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+        }),
       });
 
-      const data = await response.json();
+      const data: NewsletterResponse = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.message || "Subscription failed.");
+      if (!response.ok || data.success !== true) {
+        throw new Error(
+          data.message || "Subscription failed. Please try again."
+        );
       }
 
       setStatus("success");
@@ -91,9 +106,7 @@ export default function Newsletter() {
               role="status"
               aria-live="polite"
               className={`text-sm ${
-                status === "error"
-                  ? "text-red-300"
-                  : "text-paper"
+                status === "error" ? "text-red-300" : "text-paper"
               }`}
             >
               {message}
@@ -103,7 +116,7 @@ export default function Newsletter() {
       </div>
     </section>
   );
-            }
+}
 
 /*import { useTranslations } from "next-intl";
 
