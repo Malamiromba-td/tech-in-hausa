@@ -90,7 +90,7 @@ export default function NewsletterSubscribers() {
     void loadSubscribers();
   }, [loadSubscribers]);
 
-  function downloadCsv() {
+  {/*function downloadCsv() {
     if (!data?.subscribers.length) return;
 
     const rows = [
@@ -117,7 +117,48 @@ export default function NewsletterSubscribers() {
     anchor.click();
     anchor.remove();
     URL.revokeObjectURL(url);
+  }*/}
+
+
+  async function downloadCsv() {
+    try {
+      setError("");
+
+      const response = await fetch("/api/admin/newsletter-export", {
+        method: "GET",
+        cache: "no-store",
+      });
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        throw new Error(
+          result?.message || "Could not download newsletter subscribers."
+        );
+      }
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+
+      anchor.href = url;
+      anchor.download = "techinhausa-newsletter-subscribers.csv";
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+
+      // Revoke after the browser has had time to start the download.
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Could not download newsletter subscribers."
+      );
+    }
   }
+
+
+
 
   return (
     <main className="min-h-screen bg-paper px-4 py-8 text-ink sm:px-6 lg:px-10">
