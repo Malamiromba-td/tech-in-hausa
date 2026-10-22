@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { Link } from "next/link";
+import Link from "next/link";
 import { hasAdminSession } from "@/lib/admin-auth";
 import AdminLogoutButton from "./ui/admin-logout-button";
 import { Inbox, Users, ShieldCheck, ArrowUpRight } from "lucide-react";
