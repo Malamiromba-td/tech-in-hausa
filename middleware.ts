@@ -7,6 +7,6 @@ export const config = {
   // Match everything except Next internals, static files, the Studio
   // (which is its own locale-agnostic admin app), and API-like routes.
   matcher: [
-    "/((?!api|_next|_vercel|studio|.*\\..*).*)",
+    "/((?!api|_next|_vercel|studio|admin|.*\\..*).*)",
   ],
 };
