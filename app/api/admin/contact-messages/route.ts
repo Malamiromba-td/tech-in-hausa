@@ -85,14 +85,17 @@ export async function PATCH(request: NextRequest) {
 
     const body = await request.json().catch(() => null);
 
-    if (
-      !body ||
-      !Number.isSafeInteger(body.id) ||
-      body.id < 1 ||
-      !["new", "read", "archived"].includes(body.status)
-    ) {
-      return jsonError("Invalid message ID or status.", 422);
-    }
+    const id = Number(body?.id);
+const status = body?.status;
+
+if (
+  !body ||
+  !Number.isSafeInteger(id) ||
+  id < 1 ||
+  !["new", "read", "archived"].includes(status)
+) {
+  return jsonError("Invalid message ID or status.", 422);
+}
 
     const response = await fetch(API_URL, {
       method: "PATCH",
