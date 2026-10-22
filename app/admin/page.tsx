@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { Link } from "next/Link";
 import { hasAdminSession } from "@/lib/admin-auth";
 import AdminLogoutButton from "./ui/admin-logout-button";
 import { Inbox, Users, ShieldCheck, ArrowUpRight } from "lucide-react";
@@ -47,6 +48,29 @@ export default async function AdminDashboardPage() {
             <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Backend connection is the next implementation phase.
             </p>
+            {/* contact message*/}
+            
+<Link
+  href="/admin/messages"
+  className="group block rounded-2xl border border-line bg-white p-6 transition hover:border-indigo/40"
+>
+  <div className="flex items-start justify-between gap-4">
+    <div>
+      <div className="flex items-center gap-2 text-indigo-deep">
+        <Inbox size={20} />
+        <h2 className="font-semibold">Contact Messages</h2>
+      </div>
+      <p className="mt-2 text-sm text-ink/70">
+        Read enquiries from visitors and manage message statuses.
+      </p>
+    </div>
+    <ArrowUpRight
+      size={18}
+      className="shrink-0 text-ink/50 transition group-hover:text-indigo-deep"
+    />
+  </div>
+</Link>
+            
           </section>
 
           <section className="rounded-2xl border border-line bg-white p-5 sm:p-6">
