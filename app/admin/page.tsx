@@ -84,6 +84,14 @@ export default async function AdminDashboardPage() {
             <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Subscriber data is not loaded or exposed on this page yet.
             </p>
+{/* newsletter management*/}
+            <Link
+  href="/admin/newsletter"
+  className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition hover:bg-indigo"
+>
+  Manage subscribers
+  <ArrowUpRight size={16} />
+</Link>
           </section>
         </div>
 
