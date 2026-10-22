@@ -55,6 +55,10 @@ export async function GET() {
       signal: AbortSignal.timeout(10000),
     });
 
+    if (response.status === 401) {
+  return jsonError("PHP backend rejected the API token.", 502);
+    }
+
     return await forwardResponse(response);
   } catch {
     return jsonError("Could not load contact messages.", 502);
