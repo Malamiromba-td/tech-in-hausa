@@ -59,7 +59,7 @@ export default function RichTextEditor({
         : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
     }`;
 
-  function addLink() {
+  /*function addLink() {
     const previousUrl = editor.getAttributes("link").href as
       | string
       | undefined;
@@ -90,7 +90,50 @@ export default function RichTextEditor({
     } catch {
       window.alert("Please enter a valid URL, including https:// when needed.");
     }
+  }*/
+
+  
+  function addLink() {
+    const activeEditor = editor;
+    if (!activeEditor) return;
+
+    const previousUrl = activeEditor.getAttributes("link").href as
+      | string
+      | undefined;
+
+    const url = window.prompt("Enter the link URL", previousUrl ?? "https://");
+
+    if (url === null) return;
+
+    if (!url.trim()) {
+      activeEditor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .unsetLink()
+        .run();
+      return;
+    }
+
+    try {
+      const parsed = new URL(url.trim());
+
+      if (!["http:", "https:", "mailto:"].includes(parsed.protocol)) {
+        window.alert("Please use an HTTP, HTTPS, or email link.");
+        return;
+      }
+
+      activeEditor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: parsed.href, target: "_blank" })
+        .run();
+    } catch {
+      window.alert("Please enter a valid URL, including https:// when needed.");
+    }
   }
+
 
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
