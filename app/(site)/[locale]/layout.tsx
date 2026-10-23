@@ -27,6 +27,11 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
+    icons: {
+    icon: "/TECHINHAUSA NEW LOGO PNG.png",
+    shortcut: "/TECHINHAUSA NEW LOGO PNG.png",
+    apple: "/TECHINHAUSA NEW LOGO PNG.png",
+  },
     title: {
       default: `${SITE_NAME} — ${t("kicker")}`,
       template: `%s — ${SITE_NAME}`,

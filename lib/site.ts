@@ -14,7 +14,7 @@ export const TWITTER_HANDLE = "@techinHausa";
 // Real contact + social links — the earlier partials/footer.php file
 // turned out to be outdated; this reflects the actual live footer
 // (rendered output) across the site, which is authoritative.
-export const CONTACT_EMAIL = "info@techinhausa.com.ng";
+export const CONTACT_EMAIL = "techinhausa@malamiromba.com";
 export const BUSINESS_EMAIL = "ibrahim@Malamiromba.com";
 
 export const OFFICES = [
