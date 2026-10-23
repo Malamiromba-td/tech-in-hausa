@@ -23,3 +23,22 @@ export const POST_BY_SLUG_QUERY = defineQuery(`
     "author": author->name
   }
 `);
+
+export const RESEARCH_PAPERS_QUERY = defineQuery(`
+  *[
+    _type == "researchPaper" &&
+    defined(slug.current) &&
+    !(_id in path("drafts.**"))
+  ] | order(publishedAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    year,
+    summary,
+    authors,
+    publishedAt,
+    doi,
+    sourceUrl,
+    "pdfUrl": pdf.asset->url
+  }
+`);
