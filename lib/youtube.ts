@@ -272,7 +272,7 @@ const FALLBACK_VIDEOS: Video[] = [
     publishedAt: new Date().toISOString(),
     duration: "23:54",
   },
-];
+];*/
 
 /**
  * Fetches the channel's uploads playlist, then the video details
@@ -348,7 +348,7 @@ const FALLBACK_VIDEOS: Video[] = [
   } catch {
     return FALLBACK_VIDEOS;
   }
-}
+}*/
 
 /** Converts YouTube's ISO 8601 duration (e.g. "PT18M22S") to "18:22" */
 /*function formatDuration(iso: string): string {
@@ -362,4 +362,4 @@ const FALLBACK_VIDEOS: Video[] = [
   return hours > 0
     ? `${hours}:${pad(minutes)}:${pad(seconds)}`
     : `${minutes}:${pad(seconds)}`;
-}
+}*/
