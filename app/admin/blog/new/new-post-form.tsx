@@ -1,19 +1,23 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type { JSONContent } from "@tiptap/core";
 import RichTextEditor from "../rich-text-editor";
-import { tiptapToPortableText } from "@/sanity/lib/portable-text";
+import { tiptapToPortableText, portableTextToTiptap} from "@/sanity/lib/portable-text";
 
 const EMPTY_DOCUMENT: JSONContent = {
   type: "doc",
   content: [{ type: "paragraph" }],
 };
 
-export default function NewPostForm() {
+export default function NewPostForm({
+  postId,
+}: {
+  postId?: string;
+}) {
   const router = useRouter();
 
   const [title, setTitle] = useState("");
@@ -25,7 +29,58 @@ export default function NewPostForm() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [editorInitialContent, setEditorInitialContent] =
+  useState<JSONContent>(EMPTY_DOCUMENT);
+const [loadingPost, setLoadingPost] = useState(Boolean(postId));
 
+  useEffect(() => {
+  if (!postId) return;
+
+  let cancelled = false;
+
+  async function loadPost() {
+    try {
+      const response = await fetch(
+        `/api/admin/blog/${encodeURIComponent(postId!)}`,
+        { cache: "no-store" },
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Unable to load this post.");
+      }
+
+      if (cancelled) return;
+
+      const post = result.post;
+      const content = portableTextToTiptap(post.body ?? []);
+
+      setTitle(post.title ?? "");
+      setSlug(post.slug ?? "");
+      setExcerpt(post.excerpt ?? "");
+      setAuthorName(post.authorName ?? "");
+      setBody(content as JSONContent);
+      setEditorInitialContent(content as JSONContent);
+      setSlugEdited(true);
+    } catch (err) {
+      if (!cancelled) {
+        setError(
+          err instanceof Error ? err.message : "Unable to load this post.",
+        );
+      }
+    } finally {
+      if (!cancelled) setLoadingPost(false);
+    }
+  }
+
+  loadPost();
+
+  return () => {
+    cancelled = true;
+  };
+}, [postId]);
+  
   function makeSlug(value: string) {
     return value
       .normalize("NFKD")
@@ -62,6 +117,7 @@ export default function NewPostForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...(postId ? { id: postId } : {}),
           title: title.trim(),
           slug: slug || makeSlug(title),
           excerpt: excerpt.trim(),
@@ -99,6 +155,14 @@ export default function NewPostForm() {
   const inputClass =
     "mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100";
 
+  if (loadingPost) {
+  return (
+    <main className="mx-auto max-w-5xl px-4 py-12">
+      <p className="text-sm text-slate-500">Loading article...</p>
+    </main>
+  );
+  }
+  
   return (
     <main className="mx-auto max-w-5xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -107,11 +171,14 @@ export default function NewPostForm() {
             TechInHausa Admin
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
-            Write a blog post
-          </h1>
-          <p className="mt-2 text-sm text-slate-500">
-            Create an article for your Hausa technology and AI audience.
-          </p>
+  {postId ? "Edit blog post" : "Write a blog post"}
+</h1>
+
+<p className="mt-2 text-sm text-slate-500">
+  {postId
+    ? "Update your article and save your changes."
+    : "Create an article for your Hausa technology and AI audience."}
+</p>
         </div>
 
         <Link
@@ -240,7 +307,11 @@ export default function NewPostForm() {
           </p>
         </div>
 
-        <RichTextEditor initialContent={EMPTY_DOCUMENT} onChange={setBody} />
+        {/* <RichTextEditor initialContent={EMPTY_DOCUMENT} onChange={setBody} />*/}
+        <RichTextEditor
+  initialContent={editorInitialContent}
+  onChange={setBody}
+/>
       </section>
 
       <div className="flex flex-wrap justify-end gap-3 border-t border-slate-200 pt-6">
