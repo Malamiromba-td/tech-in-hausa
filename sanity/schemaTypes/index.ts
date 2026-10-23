@@ -1,7 +1,8 @@
 import type { SchemaTypeDefinition } from "sanity";
 import { postType } from "./post";
 import { authorType } from "./author";
+import { researchPaperType } from "./researchPaper";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [postType, authorType],
+  types: [postType, authorType, researchPaperType],
 };
