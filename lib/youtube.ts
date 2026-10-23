@@ -1,3 +1,162 @@
+
+/**
+ * lib/youtube.ts
+ *
+ * Fetches recent public uploads from the TechInHausa YouTube channel
+ * without requiring a YouTube Data API key.
+ */
+
+export type Video = {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  publishedAt: string;
+  duration?: string;
+};
+
+const CHANNEL_URL = "https://www.youtube.com/@malam_iromba";
+const CACHE_SECONDS = 900;
+
+function decodeXml(value: string): string {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, code: string) =>
+      String.fromCodePoint(Number(code))
+    )
+    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) =>
+      String.fromCodePoint(parseInt(code, 16))
+    );
+}
+
+function getTag(xml: string, tag: string): string {
+  const escapedTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = xml.match(
+    new RegExp(`<${escapedTag}(?:\\s[^>]*)?>([\\s\\S]*?)</${escapedTag}>`, "i")
+  );
+
+  return match?.[1]?.trim() ?? "";
+}
+
+function getAttribute(
+  xml: string,
+  tag: string,
+  attribute: string
+): string {
+  const escapedTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const tagMatch = xml.match(
+    new RegExp(`<${escapedTag}\\b([^>]*)\\/?>`, "i")
+  );
+
+  if (!tagMatch) return "";
+
+  const escapedAttribute = attribute.replace(
+    /[.*+?^${}()|[\]\\]/g,
+    "\\$&"
+  );
+
+  const attributeMatch = tagMatch[1].match(
+    new RegExp(`\\b${escapedAttribute}\\s*=\\s*["']([^"']*)["']`, "i")
+  );
+
+  return attributeMatch?.[1] ? decodeXml(attributeMatch[1]) : "";
+}
+
+async function getChannelId(): Promise<string | null> {
+  try {
+    const response = await fetch(CHANNEL_URL, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; TechInHausa/1.0)",
+      },
+      signal: AbortSignal.timeout(8000),
+      next: { revalidate: 3600 },
+    });
+
+    if (!response.ok) return null;
+
+    const html = await response.text();
+
+    // YouTube channel pages include the permanent UC... channel ID.
+    const match =
+      html.match(/"channelId"\s*:\s*"(UC[\w-]+)"/) ??
+      html.match(/youtube\.com\/channel\/(UC[\w-]+)/);
+
+    return match?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function getLatestVideos(limit = 12): Promise<Video[]> {
+  try {
+    const channelId = await getChannelId();
+
+    if (!channelId) {
+      console.error("TechInHausa: Could not resolve the YouTube channel ID.");
+      return [];
+    }
+
+    const feedUrl =
+      `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+
+    const response = await fetch(feedUrl, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; TechInHausa/1.0)",
+      },
+      signal: AbortSignal.timeout(8000),
+      next: { revalidate: CACHE_SECONDS },
+    });
+
+    if (!response.ok) {
+      console.error(`TechInHausa YouTube feed returned ${response.status}.`);
+      return [];
+    }
+
+    const xml = await response.text();
+
+    if (!xml.includes("<feed")) {
+      console.error("TechInHausa: YouTube returned an invalid feed.");
+      return [];
+    }
+
+    const entries = xml.match(/<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi) ?? [];
+
+    return entries.slice(0, Math.min(Math.max(limit, 1), 15)).flatMap(
+      (entry): Video[] => {
+        const id = getTag(entry, "yt:videoId");
+
+        if (!/^[\w-]{11}$/.test(id)) return [];
+
+        const title = decodeXml(getTag(entry, "title"));
+        const description = decodeXml(
+          getTag(entry, "media:description")
+        );
+        const publishedAt = getTag(entry, "published");
+        const thumbnail = getAttribute(entry, "media:thumbnail", "url");
+
+        if (!title) return [];
+
+        return [{
+          id,
+          title,
+          description,
+          thumbnail,
+          publishedAt,
+        }];
+      }
+    );
+  } catch (error) {
+    console.error("TechInHausa: Unable to fetch YouTube uploads.", error);
+    return [];
+  }
+}
+
+
+
 /**
  * lib/youtube.ts
  * ---------------------------------
@@ -16,7 +175,7 @@
  * renders instead of crashing.
  */
 
-export type Video = {
+/*export type Video = {
   id: string;
   title: string;
   description: string;
@@ -113,14 +272,14 @@ const FALLBACK_VIDEOS: Video[] = [
     publishedAt: new Date().toISOString(),
     duration: "23:54",
   },
-];
+];*/
 
 /**
  * Fetches the channel's uploads playlist, then the video details
  * (needed separately to get duration) for each item.
  * Revalidates once an hour so new uploads appear without a redeploy.
  */
-export async function getLatestVideos(limit = 12): Promise<Video[]> {
+/*export async function getLatestVideos(limit = 12): Promise<Video[]> {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const channelId = process.env.YOUTUBE_CHANNEL_ID;
 
@@ -189,10 +348,10 @@ export async function getLatestVideos(limit = 12): Promise<Video[]> {
   } catch {
     return FALLBACK_VIDEOS;
   }
-}
+}*/
 
 /** Converts YouTube's ISO 8601 duration (e.g. "PT18M22S") to "18:22" */
-function formatDuration(iso: string): string {
+/*function formatDuration(iso: string): string {
   const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
   if (!match) return "";
   const [, h, m, s] = match;
@@ -203,4 +362,4 @@ function formatDuration(iso: string): string {
   return hours > 0
     ? `${hours}:${pad(minutes)}:${pad(seconds)}`
     : `${minutes}:${pad(seconds)}`;
-}
+}*/
