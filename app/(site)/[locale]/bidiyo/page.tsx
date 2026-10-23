@@ -86,7 +86,7 @@ export default async function BidiyoPage({
       <main className="min-h-screen bg-paper">
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-line">
-          <div className="pointer-events-none absolute -right-24 -top-32 h-80 w-80 rounded-full bg-gold-soft/30 blur-3xl" />
+          {/*<div className="pointer-events-none absolute -right-24 -top-32 h-80 w-80 rounded-full bg-gold-soft/30 blur-3xl" />*/}
 
           <div className="relative mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
             <div className="mb-5 flex items-center gap-3">
