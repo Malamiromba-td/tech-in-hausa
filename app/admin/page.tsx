@@ -16,7 +16,8 @@ export default async function AdminDashboardPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
           <a href="/admin" className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-gold-soft">
-              <ShieldCheck size={24} />
+              {/* <ShieldCheck size={24} />*/}
+              <img src="/TECHINHAUSA NEW LOGO PNG.png" alt="TECHINHAUSA NEW LOGO" aria-hidden="true" className="w-8 shrink-0 object-contain md:h-8.5 md:w-8.5" />
             </span>
             <span>
               <span className="block font-display text-xl font-semibold">TechInHausa</span>
@@ -84,6 +85,14 @@ export default async function AdminDashboardPage() {
             <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Subscriber data is not loaded or exposed on this page yet.
             </p>
+{/* newsletter management*/}
+            <Link
+  href="/admin/newsletter"
+  className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition hover:bg-indigo"
+>
+  Manage subscribers
+  <ArrowUpRight size={16} />
+</Link>
           </section>
         </div>
 

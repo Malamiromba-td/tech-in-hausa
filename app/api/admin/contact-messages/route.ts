@@ -55,6 +55,10 @@ export async function GET() {
       signal: AbortSignal.timeout(10000),
     });
 
+    if (response.status === 401) {
+  return jsonError("PHP backend rejected the API token.", 502);
+    }
+
     return await forwardResponse(response);
   } catch {
     return jsonError("Could not load contact messages.", 502);
@@ -81,14 +85,17 @@ export async function PATCH(request: NextRequest) {
 
     const body = await request.json().catch(() => null);
 
-    if (
-      !body ||
-      !Number.isSafeInteger(body.id) ||
-      body.id < 1 ||
-      !["new", "read", "archived"].includes(body.status)
-    ) {
-      return jsonError("Invalid message ID or status.", 422);
-    }
+    const id = Number(body?.id);
+const status = body?.status;
+
+if (
+  !body ||
+  !Number.isSafeInteger(id) ||
+  id < 1 ||
+  !["new", "read", "archived"].includes(status)
+) {
+  return jsonError("Invalid message ID or status.", 422);
+}
 
     const response = await fetch(API_URL, {
       method: "PATCH",

@@ -45,8 +45,10 @@ export default function AdminLoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-paper px-4 py-10 text-ink">
       <section className="w-full max-w-md">
         <a href="/" className="mb-8 flex items-center justify-center gap-3" aria-label="TechInHausa home">
-          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-deep text-gold-soft">
-            <GraduationCap size={27} aria-hidden="true" />
+          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-deep/20 text-gold-soft">
+            {/*<GraduationCap size={27} aria-hidden="true" />*/}
+            <img src="/TECHINHAUSA NEW LOGO PNG.png" alt="TECHINHAUSA NEW LOGO" aria-hidden="true" className="w-8 shrink-0 object-contain md:h-8.5 md:w-8.5" />
+            
           </span>
           <span>
             <span className="block font-display text-2xl font-semibold text-indigo-deep">TechInHausa</span>
