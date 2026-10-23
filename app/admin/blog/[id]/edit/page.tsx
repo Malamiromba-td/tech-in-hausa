@@ -1,7 +1,7 @@
 
 import { redirect } from "next/navigation";
 import { hasAdminSession } from "@/lib/admin-auth";
-import NewPostForm from "../../../new/new-post-form";
+import NewPostForm from "../../new/new-post-form";
 
 export const dynamic = "force-dynamic";
 
