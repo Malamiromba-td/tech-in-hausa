@@ -41,7 +41,7 @@ export default function Glossary() {
             href={GLOSSARY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-indigo px-6 py-3 text-sm font-medium text-indigo transition-colors hover:bg-indigo hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo"
+            className="rounded-[3px] border border-indigo/25 px-6 py-3 text-[14.5px] font-medium text-indigo hover:bg-indigo-tint"
           >
             See More
             {/*<span className="ml-2" aria-hidden="true">
@@ -49,7 +49,6 @@ export default function Glossary() {
             </span>*/}
           </a>
         </div>
-      </div>
     </section>
   );
 }
