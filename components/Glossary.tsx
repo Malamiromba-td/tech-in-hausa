@@ -44,11 +44,9 @@ export default function Glossary() {
             className="rounded-[3px] border border-indigo/25 px-6 py-3 text-[14.5px] font-medium text-indigo hover:bg-indigo-tint"
           >
             See More
-            {/*<span className="ml-2" aria-hidden="true">
-              ↗
-            </span>*/}
           </a>
         </div>
+      </div>
     </section>
   );
 }
