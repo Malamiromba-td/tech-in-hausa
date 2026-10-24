@@ -82,7 +82,9 @@ export default async function AdminDashboardPage() {
       </Link>
 
       {/* Publications and research */}
-      <section className="rounded-2xl border border-line bg-white p-5 sm:p-6">
+      <Link
+        href="/admin/publications"
+        className="rounded-2xl border border-line bg-white p-5 sm:p-6">
         <div className="flex items-start justify-between gap-3">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f8efd8] text-[#825d16]">
             <BookOpen size={22} />
@@ -104,7 +106,7 @@ export default async function AdminDashboardPage() {
         <p className="mt-5 text-sm font-medium text-ink/50">
           Management tools not yet available
         </p>
-      </section>
+      </Link>
 
       {/* Contact messages */}
       <Link
