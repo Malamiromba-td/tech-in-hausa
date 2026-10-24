@@ -213,7 +213,7 @@ export async function POST(request: Request) {
       { slug, id, draftId },
       { perspective: "raw" },
     );
-
+  }
 
 export async function POST(request: Request) {
   if (!(await hasAdminSession())) {
