@@ -25,7 +25,7 @@ export async function GET() {
       { success: false, error: "Unauthorized" },
       { status: 401 },
     );
-  }
+  };
 
   try {
     const client = getSanityWriteClient();
