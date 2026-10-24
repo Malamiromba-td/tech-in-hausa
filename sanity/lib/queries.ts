@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 
-export const ALL_POSTS_QUERY = defineQuery(`
+/*export const ALL_POSTS_QUERY = defineQuery(`
   *[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
     _id,
     title,
@@ -22,7 +22,41 @@ export const POST_BY_SLUG_QUERY = defineQuery(`
     mainImage,
     "author": author->name
   }
+`);*/
+
+
+export const ALL_POSTS_QUERY = defineQuery(`
+  *[
+    _type == "post" &&
+    defined(slug.current) &&
+    !(_id in path("drafts.**"))
+  ] | order(publishedAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    publishedAt,
+    "author": author->name
+  }
 `);
+
+export const POST_BY_SLUG_QUERY = defineQuery(`
+  *[
+    _type == "post" &&
+    slug.current == $slug &&
+    !(_id in path("drafts.**"))
+  ][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    publishedAt,
+    body,
+    mainImage,
+    "author": author->name
+  }
+`);
+
 
 export const RESEARCH_PAPERS_QUERY = defineQuery(`
   *[
