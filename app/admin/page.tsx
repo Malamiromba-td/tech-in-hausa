@@ -89,8 +89,6 @@ export default async function AdminDashboardPage() {
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f8efd8] text-[#825d16]">
             <BookOpen size={22} />
           </span>
-
-          <ComingSoonBadge />
         </div>
 
         <h2 className="mt-5 font-display text-xl font-semibold text-indigo-deep">
@@ -103,10 +101,11 @@ export default async function AdminDashboardPage() {
           through Sanity.
         </p>
 
-        <p className="mt-5 text-sm font-medium text-ink/50">
-          Management tools not yet available
-        </p>
-      </Link>
+        <span className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition group-hover:bg-indigo">
+          Manage publication and research
+          <ArrowUpRight size={16} />
+        </span>
+     </Link>
 
       {/* Contact messages */}
       <Link
@@ -201,7 +200,7 @@ export default async function AdminDashboardPage() {
   </div>
   
 
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      { /* <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-indigo">Overview</p>
           <h1 className="mt-2 font-display text-3xl font-semibold text-indigo-deep sm:text-4xl">Admin dashboard</h1>
@@ -219,12 +218,12 @@ export default async function AdminDashboardPage() {
             <p className="mt-2 text-sm leading-6 text-ink/70">
               View submissions, search messages, and manage their status.
             </p>
-            {/*  <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
+              <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Backend connection is the next implementation phase.
             </p>*/}
             {/* contact message*/}
             
-<Link
+      {/*<Link
   href="/admin/messages"
   className="group block rounded-2xl border border-line bg-white p-6 transition hover:border-indigo/40"
 >
@@ -255,11 +254,11 @@ export default async function AdminDashboardPage() {
             <p className="mt-2 text-sm leading-6 text-ink/70">
               Review active subscribers and download a CSV export.
             </p>
-            {/* <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
+             <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Subscriber data is not loaded or exposed on this page yet.
             </p>*/}
 {/* newsletter management*/}
-            <Link
+      {/* <Link
   href="/admin/newsletter"
   className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition hover:bg-indigo"
 >
@@ -289,3 +288,4 @@ export default async function AdminDashboardPage() {
     </main>
   );
 }
+*/}
