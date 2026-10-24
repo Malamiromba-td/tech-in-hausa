@@ -283,8 +283,8 @@ export default async function AdminDashboardPage() {
               </a>
             </div>
           </div>
-        </section>*/}
-      </div>
+        </section>
+      </div>*/}
     </main>
   );
 }
