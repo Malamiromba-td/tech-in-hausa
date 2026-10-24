@@ -6,6 +6,7 @@ import { Inbox, Users, ShieldCheck, ArrowUpRight } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Admin dashboard | TechInHausa", robots: { index: false, follow: false } };
+function ComingSoonBadge() { return (  Coming soon  ); }
 
 export default async function AdminDashboardPage() {
   if (!(await hasAdminSession())) redirect("/admin/login");
@@ -28,6 +29,172 @@ export default async function AdminDashboardPage() {
         </div>
       </header>
 
+  <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div className="mb-8">
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-indigo">
+        Overview
+      </p>
+
+      <h1 className="mt-2 font-display text-3xl font-semibold text-indigo-deep sm:text-4xl">
+        Admin dashboard
+      </h1>
+
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-ink/70">
+        Manage articles, publications and research, contact messages, and
+        newsletter subscribers from one secure workspace.
+      </p>
+    </div>
+
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Blog management */}
+      <Link
+        href="/admin/blog"
+        className="group rounded-2xl border border-line bg-white p-5 transition hover:border-indigo/40 hover:shadow-md sm:p-6"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-tint text-indigo-deep">
+            <Newspaper size={22} />
+          </span>
+
+          <ArrowUpRight
+            size={18}
+            className="text-ink/50 transition group-hover:text-indigo-deep"
+          />
+        </div>
+
+        <h2 className="mt-5 font-display text-xl font-semibold text-indigo-deep">
+          Blog Management
+        </h2>
+
+        <p className="mt-2 text-sm leading-6 text-ink/70">
+          Create articles, upload cover images, edit drafts, publish posts,
+          and manage existing content.
+        </p>
+
+        <span className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition group-hover:bg-indigo">
+          Manage blog
+          <ArrowUpRight size={16} />
+        </span>
+      </Link>
+
+      {/* Publications and research */}
+      <section className="rounded-2xl border border-line bg-white p-5 sm:p-6">
+        <div className="flex items-start justify-between gap-3">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f8efd8] text-[#825d16]">
+            <BookOpen size={22} />
+          </span>
+
+          <ComingSoonBadge />
+        </div>
+
+        <h2 className="mt-5 font-display text-xl font-semibold text-indigo-deep">
+          Publications &amp; Research
+        </h2>
+
+        <p className="mt-2 text-sm leading-6 text-ink/70">
+          Publish and manage research papers, reports, educational
+          studies, abstracts, references, and downloadable documents
+          through Sanity.
+        </p>
+
+        <p className="mt-5 text-sm font-medium text-ink/50">
+          Management tools not yet available
+        </p>
+      </section>
+
+      {/* Contact messages */}
+      <Link
+        href="/admin/messages"
+        className="group rounded-2xl border border-line bg-white p-5 transition hover:border-indigo/40 hover:shadow-md sm:p-6"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-tint text-indigo-deep">
+            <Inbox size={22} />
+          </span>
+
+          <ArrowUpRight
+            size={18}
+            className="text-ink/50 transition group-hover:text-indigo-deep"
+          />
+        </div>
+
+        <h2 className="mt-5 font-display text-xl font-semibold text-indigo-deep">
+          Contact Messages
+        </h2>
+
+        <p className="mt-2 text-sm leading-6 text-ink/70">
+          Read enquiries from visitors, search submissions, and manage
+          message statuses.
+        </p>
+
+        <span className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition group-hover:bg-indigo">
+          View messages
+          <ArrowUpRight size={16} />
+        </span>
+      </Link>
+
+      {/* Newsletter subscribers */}
+      <Link
+        href="/admin/newsletter"
+        className="group rounded-2xl border border-line bg-white p-5 transition hover:border-indigo/40 hover:shadow-md sm:p-6"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f8efd8] text-[#825d16]">
+            <Users size={22} />
+          </span>
+
+          <ArrowUpRight
+            size={18}
+            className="text-ink/50 transition group-hover:text-indigo-deep"
+          />
+        </div>
+
+        <h2 className="mt-5 font-display text-xl font-semibold text-indigo-deep">
+          Newsletter Subscribers
+        </h2>
+
+        <p className="mt-2 text-sm leading-6 text-ink/70">
+          Review subscriber records and download a CSV export.
+        </p>
+
+        <span className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-deep px-4 py-2.5 text-sm font-medium text-white transition group-hover:bg-indigo">
+          Manage subscribers
+          <ArrowUpRight size={16} />
+        </span>
+      </Link>
+    </div>
+
+    {/* Authentication status */}
+    <section className="mt-6 rounded-2xl border border-line bg-white p-5 sm:p-6">
+      <div className="flex items-start gap-3">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-tint text-indigo-deep">
+          <ShieldCheck size={21} />
+        </span>
+
+        <div>
+          <h2 className="font-display text-xl font-semibold text-indigo-deep">
+            Authentication enabled
+          </h2>
+
+          <p className="mt-1 text-sm leading-6 text-ink/70">
+            This dashboard checks a signed, expiring HTTP-only session on
+            the server. Administrative pages and protected operations
+            require authentication.
+          </p>
+
+          <a
+            href="/api/admin/session"
+            className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-indigo hover:underline"
+          >
+            Check session endpoint
+            <ArrowUpRight size={15} />
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-indigo">Overview</p>
@@ -46,9 +213,9 @@ export default async function AdminDashboardPage() {
             <p className="mt-2 text-sm leading-6 text-ink/70">
               View submissions, search messages, and manage their status.
             </p>
-            <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
+            {/*  <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Backend connection is the next implementation phase.
-            </p>
+            </p>*/}
             {/* contact message*/}
             
 <Link
@@ -82,9 +249,9 @@ export default async function AdminDashboardPage() {
             <p className="mt-2 text-sm leading-6 text-ink/70">
               Review active subscribers and download a CSV export.
             </p>
-            <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
+            {/* <p className="mt-4 rounded-lg bg-paper-tint px-3 py-2 text-xs text-ink/65">
               Subscriber data is not loaded or exposed on this page yet.
-            </p>
+            </p>*/}
 {/* newsletter management*/}
             <Link
   href="/admin/newsletter"
