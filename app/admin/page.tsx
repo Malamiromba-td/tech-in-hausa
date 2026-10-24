@@ -6,7 +6,11 @@ import { Inbox, Users, ShieldCheck, ArrowUpRight } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Admin dashboard | TechInHausa", robots: { index: false, follow: false } };
-function ComingSoonBadge() { return (  Coming soon  ); }
+function ComingSoonBadge() { 
+  return (  
+    Coming soon
+  ); 
+}
 
 export default async function AdminDashboardPage() {
   if (!(await hasAdminSession())) redirect("/admin/login");
