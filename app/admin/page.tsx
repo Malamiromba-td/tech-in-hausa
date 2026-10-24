@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Admin dashboard | TechInHausa", robots: { index: false, follow: false } };
 function ComingSoonBadge() { 
   return (  
-    Coming soon
+    "Coming soon"
   ); 
 }
 
