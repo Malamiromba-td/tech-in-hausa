@@ -96,7 +96,214 @@ function normalizeSlug(value: string) {
     .slice(0, 96);
 }
 
+
 export async function POST(request: Request) {
+  if (!(await hasAdminSession())) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
+  try {
+    const input = await request.json();
+
+    const title =
+      typeof input.title === "string" ? input.title.trim() : "";
+    const excerpt =
+      typeof input.excerpt === "string" ? input.excerpt.trim() : "";
+    const slug = normalizeSlug(
+      typeof input.slug === "string" && input.slug.trim()
+        ? input.slug
+        : title,
+    );
+    const status = input.status;
+    const authorName =
+      typeof input.authorName === "string" ? input.authorName.trim() : "";
+    const body = input.body;
+
+    if (!title || title.length > 200) {
+      return NextResponse.json(
+        { success: false, error: "Title is required and must be at most 200 characters." },
+        { status: 400 },
+      );
+    }
+
+    if (!slug) {
+      return NextResponse.json(
+        { success: false, error: "A valid slug is required." },
+        { status: 400 },
+      );
+    }
+
+    if (!excerpt || excerpt.length > 200) {
+      return NextResponse.json(
+        { success: false, error: "Excerpt is required and must be at most 200 characters." },
+        { status: 400 },
+      );
+    }
+
+    if (
+      !Array.isArray(body) ||
+      body.length === 0 ||
+      body.some(
+        (block) =>
+          !block ||
+          typeof block !== "object" ||
+          block._type !== "block" ||
+          !Array.isArray(block.children),
+      )
+    ) {
+      return NextResponse.json(
+        { success: false, error: "Article content is invalid or empty." },
+        { status: 400 },
+      );
+    }
+
+    if (status !== "draft" && status !== "published") {
+      return NextResponse.json(
+        { success: false, error: "Status must be draft or published." },
+        { status: 400 },
+      );
+    }
+
+    const suppliedId =
+      typeof input.id === "string" ? input.id.trim() : "";
+
+    if (suppliedId && !/^[a-zA-Z0-9_-]{1,128}$/.test(suppliedId)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid post ID." },
+        { status: 400 },
+      );
+    }
+
+    const client = getSanityWriteClient();
+    const id = suppliedId || crypto.randomUUID();
+    const draftId = `drafts.${id}`;
+
+    // Read both versions explicitly, including unpublished drafts.
+    const [published, draft] = await Promise.all([
+      client.fetch(
+        `*[_id == $id && _type == "post"][0]`,
+        { id },
+        { perspective: "raw" },
+      ),
+      client.fetch(
+        `*[_id == $id && _type == "post"][0]`,
+        { id: draftId },
+        { perspective: "raw" },
+      ),
+    ]);
+
+    if (suppliedId && !published && !draft) {
+      return NextResponse.json(
+        { success: false, error: "Post not found." },
+        { status: 404 },
+      );
+    }
+
+    const previous = draft ?? published;
+
+    const slugTaken = await client.fetch(
+      `count(*[
+        _type == "post" &&
+        slug.current == $slug &&
+        !(_id in [$id, $draftId])
+      ]) > 0`,
+      { slug, id, draftId },
+      { perspective: "raw" },
+    );
+
+    if (slugTaken) {
+      return NextResponse.json(
+        { success: false, error: "That slug is already in use." },
+        { status: 409 },
+      );
+    }
+
+    let author = previous?.author;
+
+    if (authorName) {
+      const matchingAuthor = await client.fetch(
+        `*[_type == "author" && name == $name][0]{_id}`,
+        { name: authorName },
+      );
+
+      if (!matchingAuthor?._id) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Author not found. Select an existing Sanity author.",
+          },
+          { status: 400 },
+        );
+      }
+
+      author = {
+        _type: "reference",
+        _ref: matchingAuthor._id,
+      };
+    }
+
+    const existingPublishedAt =
+      published?.publishedAt ?? draft?.publishedAt;
+
+    const post = {
+      _type: "post",
+      _id: id,
+      title,
+      slug: { _type: "slug", current: slug },
+      excerpt,
+      body,
+      ...(author ? { author } : {}),
+      ...(previous?.mainImage
+        ? { mainImage: previous.mainImage }
+        : {}),
+      ...(existingPublishedAt
+        ? { publishedAt: existingPublishedAt }
+        : status === "published"
+          ? { publishedAt: new Date().toISOString() }
+          : {}),
+    };
+
+    if (status === "draft") {
+      await client.createOrReplace({
+        ...post,
+        _id: draftId,
+      });
+
+      return NextResponse.json({
+        success: true,
+        id,
+        status: published ? "draft changes" : "draft",
+      });
+    }
+
+    const transaction = client.transaction().createOrReplace(post);
+
+    if (draft) {
+      transaction.delete(draftId);
+    }
+
+    await transaction.commit();
+
+    return NextResponse.json({
+      success: true,
+      id,
+      status: "published",
+    });
+  } catch (error) {
+    console.error("Admin blog save failed:", error);
+
+    return NextResponse.json(
+      { success: false, error: "Unable to save the blog post." },
+      { status: 500 },
+    );
+  }
+       }
+     
+
+/*export async function POST(request: Request) {
   if (!(await hasAdminSession())) {
     return NextResponse.json(
       { success: false, error: "Unauthorized" },
@@ -319,4 +526,4 @@ export async function POST(request: Request) {
     );
   }
          }
-       
+       */
