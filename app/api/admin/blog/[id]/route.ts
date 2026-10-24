@@ -18,7 +18,10 @@ const POST_FIELDS = `{
   excerpt,
   publishedAt,
   body,
-  mainImage,
+  "mainImage": mainImage{
+    ...,
+    "url": asset->url
+  },
   "authorName": author->name
 }`;
 
