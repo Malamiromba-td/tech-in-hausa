@@ -94,8 +94,7 @@ function normalizeSlug(value: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 96);
-}
-l
+}p
 
 export async function POST(request: Request) {
   if (!(await hasAdminSession())) {
