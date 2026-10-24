@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { hasAdminSession } from "@/lib/admin-auth";
 import AdminLogoutButton from "./ui/admin-logout-button";
-import { Inbox, Users, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { Inbox, Users, ShieldCheck,Newspaper, BookOpen, ArrowUpRight } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Admin dashboard | TechInHausa", robots: { index: false, follow: false } };
