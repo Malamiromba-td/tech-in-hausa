@@ -214,6 +214,160 @@ export async function POST(request: Request) {
       { perspective: "raw" },
     );
 
+
+export async function POST(request: Request) {
+  if (!(await hasAdminSession())) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
+  try {
+    const input = await request.json();
+
+    const title =
+      typeof input.title === "string" ? input.title.trim() : "";
+    const excerpt =
+      typeof input.excerpt === "string" ? input.excerpt.trim() : "";
+    const slug = normalizeSlug(
+      typeof input.slug === "string" && input.slug.trim()
+        ? input.slug
+        : title,
+    );
+    const status = input.status;
+    const authorName =
+      typeof input.authorName === "string" ? input.authorName.trim() : "";
+    const body = input.body;
+
+    const hasMainImage = Object.prototype.hasOwnProperty.call(
+      input,
+      "mainImage",
+    );
+    const requestedMainImage = input.mainImage;
+
+    if (!title || title.length > 200) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Title is required and must be at most 200 characters.",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (!slug) {
+      return NextResponse.json(
+        { success: false, error: "A valid slug is required." },
+        { status: 400 },
+      );
+    }
+
+    if (!excerpt || excerpt.length > 200) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Excerpt is required and must be at most 200 characters.",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (
+      !Array.isArray(body) ||
+      body.length === 0 ||
+      body.some(
+        (block) =>
+          !block ||
+          typeof block !== "object" ||
+          block._type !== "block" ||
+          !Array.isArray(block.children),
+      )
+    ) {
+      return NextResponse.json(
+        { success: false, error: "Article content is invalid or empty." },
+        { status: 400 },
+      );
+    }
+
+    if (status !== "draft" && status !== "published") {
+      return NextResponse.json(
+        { success: false, error: "Status must be draft or published." },
+        { status: 400 },
+      );
+    }
+
+    // Validate the requested cover image before writing to Sanity.
+    if (hasMainImage && requestedMainImage !== null) {
+      const image = requestedMainImage as {
+        _type?: unknown;
+        asset?: {
+          _type?: unknown;
+          _ref?: unknown;
+        };
+      };
+
+      if (
+        image?._type !== "image" ||
+        image.asset?._type !== "reference" ||
+        typeof image.asset._ref !== "string" ||
+        !/^image-[a-f0-9]+-\d+x\d+-(jpg|png|webp)$/i.test(
+          image.asset._ref,
+        )
+      ) {
+        return NextResponse.json(
+          { success: false, error: "Invalid cover image reference." },
+          { status: 400 },
+        );
+      }
+    }
+
+    const suppliedId =
+      typeof input.id === "string" ? input.id.trim() : "";
+
+    if (suppliedId && !/^[a-zA-Z0-9_-]{1,128}$/.test(suppliedId)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid post ID." },
+        { status: 400 },
+      );
+    }
+
+    const client = getSanityWriteClient();
+    const id = suppliedId || crypto.randomUUID();
+    const draftId = `drafts.${id}`;
+
+    const [published, draft] = await Promise.all([
+      client.fetch(
+        `*[_id == $id && _type == "post"][0]`,
+        { id },
+        { perspective: "raw" },
+      ),
+      client.fetch(
+        `*[_id == $id && _type == "post"][0]`,
+        { id: draftId },
+        { perspective: "raw" },
+      ),
+    ]);
+
+    if (suppliedId && !published && !draft) {
+      return NextResponse.json(
+        { success: false, error: "Post not found." },
+        { status: 404 },
+      );
+    }
+
+    const previous = draft ?? published;
+
+    const slugTaken = await client.fetch(
+      `count(*[
+        _type == "post" &&
+        slug.current == $slug &&
+        !(_id in [$id, $draftId])
+      ]) > 0`,
+      { slug, id, draftId },
+      { perspective: "raw" },
+    );
+
     if (slugTaken) {
       return NextResponse.json(
         { success: false, error: "That slug is already in use." },
@@ -245,6 +399,13 @@ export async function POST(request: Request) {
       };
     }
 
+    // Explicit null removes the image. An omitted field preserves it.
+    const mainImage = hasMainImage
+      ? requestedMainImage === null
+        ? undefined
+        : requestedMainImage
+      : previous?.mainImage ?? published?.mainImage;
+
     const existingPublishedAt =
       published?.publishedAt ?? draft?.publishedAt;
 
@@ -256,9 +417,7 @@ export async function POST(request: Request) {
       excerpt,
       body,
       ...(author ? { author } : {}),
-      ...(previous?.mainImage
-        ? { mainImage: previous.mainImage }
-        : {}),
+      ...(mainImage ? { mainImage } : {}),
       ...(existingPublishedAt
         ? { publishedAt: existingPublishedAt }
         : status === "published"
@@ -300,8 +459,8 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
-       }
-     
+}
+
 
 /*export async function POST(request: Request) {
   if (!(await hasAdminSession())) {
