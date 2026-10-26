@@ -288,10 +288,10 @@ setCoverImage(
               {excerpt.length}/200
             </span>
           </div>
-          <CoverImageUpload
+          {/* <CoverImageUpload
   value={coverImage}
   onChange={setCoverImage}
-/>
+/>*/}
           <textarea
             id="post-excerpt"
             className={inputClass}
