@@ -25,7 +25,7 @@ export async function GET() {
       { success: false, error: "Unauthorized" },
       { status: 401 },
     );
-  }
+  };
 
   try {
     const client = getSanityWriteClient();
@@ -96,7 +96,6 @@ function normalizeSlug(value: string) {
     .slice(0, 96);
 }
 
-
 export async function POST(request: Request) {
   if (!(await hasAdminSession())) {
     return NextResponse.json(
@@ -122,9 +121,18 @@ export async function POST(request: Request) {
       typeof input.authorName === "string" ? input.authorName.trim() : "";
     const body = input.body;
 
+    const hasMainImage = Object.prototype.hasOwnProperty.call(
+      input,
+      "mainImage",
+    );
+    const requestedMainImage = input.mainImage;
+
     if (!title || title.length > 200) {
       return NextResponse.json(
-        { success: false, error: "Title is required and must be at most 200 characters." },
+        {
+          success: false,
+          error: "Title is required and must be at most 200 characters.",
+        },
         { status: 400 },
       );
     }
@@ -138,7 +146,10 @@ export async function POST(request: Request) {
 
     if (!excerpt || excerpt.length > 200) {
       return NextResponse.json(
-        { success: false, error: "Excerpt is required and must be at most 200 characters." },
+        {
+          success: false,
+          error: "Excerpt is required and must be at most 200 characters.",
+        },
         { status: 400 },
       );
     }
@@ -167,6 +178,31 @@ export async function POST(request: Request) {
       );
     }
 
+    // Validate the requested cover image before writing to Sanity.
+    if (hasMainImage && requestedMainImage !== null) {
+      const image = requestedMainImage as {
+        _type?: unknown;
+        asset?: {
+          _type?: unknown;
+          _ref?: unknown;
+        };
+      };
+
+      if (
+        image?._type !== "image" ||
+        image.asset?._type !== "reference" ||
+        typeof image.asset._ref !== "string" ||
+        !/^image-[a-f0-9]+-\d+x\d+-(jpg|png|webp)$/i.test(
+          image.asset._ref,
+        )
+      ) {
+        return NextResponse.json(
+          { success: false, error: "Invalid cover image reference." },
+          { status: 400 },
+        );
+      }
+    }
+
     const suppliedId =
       typeof input.id === "string" ? input.id.trim() : "";
 
@@ -181,7 +217,6 @@ export async function POST(request: Request) {
     const id = suppliedId || crypto.randomUUID();
     const draftId = `drafts.${id}`;
 
-    // Read both versions explicitly, including unpublished drafts.
     const [published, draft] = await Promise.all([
       client.fetch(
         `*[_id == $id && _type == "post"][0]`,
@@ -245,6 +280,13 @@ export async function POST(request: Request) {
       };
     }
 
+    // Explicit null removes the image. An omitted field preserves it.
+    const mainImage = hasMainImage
+      ? requestedMainImage === null
+        ? undefined
+        : requestedMainImage
+      : previous?.mainImage ?? published?.mainImage;
+
     const existingPublishedAt =
       published?.publishedAt ?? draft?.publishedAt;
 
@@ -256,9 +298,7 @@ export async function POST(request: Request) {
       excerpt,
       body,
       ...(author ? { author } : {}),
-      ...(previous?.mainImage
-        ? { mainImage: previous.mainImage }
-        : {}),
+      ...(mainImage ? { mainImage } : {}),
       ...(existingPublishedAt
         ? { publishedAt: existingPublishedAt }
         : status === "published"
@@ -300,8 +340,8 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
-       }
-     
+}
+
 
 /*export async function POST(request: Request) {
   if (!(await hasAdminSession())) {

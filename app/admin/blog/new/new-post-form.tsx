@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type { JSONContent } from "@tiptap/core";
 import RichTextEditor from "../rich-text-editor";
+import CoverImageUpload, {
+  type CoverImageValue,
+} from "../cover-image-upload";
 import { tiptapToPortableText, portableTextToTiptap} from "@/sanity/lib/portable-text";
 
 const EMPTY_DOCUMENT: JSONContent = {
@@ -32,7 +35,8 @@ export default function NewPostForm({
   const [editorInitialContent, setEditorInitialContent] =
   useState<JSONContent>(EMPTY_DOCUMENT);
 const [loadingPost, setLoadingPost] = useState(Boolean(postId));
-
+const [coverImage, setCoverImage] = useState<CoverImageValue | null>(null);
+  
   useEffect(() => {
   if (!postId) return;
 
@@ -54,6 +58,17 @@ const [loadingPost, setLoadingPost] = useState(Boolean(postId));
       if (cancelled) return;
 
       const post = result.post;
+
+      const existingImage = post.mainImage;
+
+setCoverImage(
+  existingImage?.asset?._ref && existingImage?.url
+    ? {
+        assetId: existingImage.asset._ref,
+        url: existingImage.url,
+      }
+    : null,
+);
       const content = portableTextToTiptap(post.body ?? []);
 
       setTitle(post.title ?? "");
@@ -126,6 +141,15 @@ const [loadingPost, setLoadingPost] = useState(Boolean(postId));
             body as Parameters<typeof tiptapToPortableText>[0],
           ),
           status,
+          mainImage: coverImage
+  ? {
+      _type: "image",
+      asset: {
+        _type: "reference",
+        _ref: coverImage.assetId,
+      },
+    }
+  : null,
         }),
       });
 
@@ -264,6 +288,10 @@ const [loadingPost, setLoadingPost] = useState(Boolean(postId));
               {excerpt.length}/200
             </span>
           </div>
+          {/* <CoverImageUpload
+  value={coverImage}
+  onChange={setCoverImage}
+/>*/}
           <textarea
             id="post-excerpt"
             className={inputClass}
