@@ -15,7 +15,7 @@ export type Video = {
   duration?: string;
 };
 
-const CHANNEL_URL = "https://www.youtube.com/@malam_iromba";
+const CHANNEL_URL = "https://youtube.com/playlist?list=PLXBKyxTE6bIg&si=PAKNHm325pLnMvjr";
 const CACHE_SECONDS = 900;
 
 function decodeXml(value: string): string {
