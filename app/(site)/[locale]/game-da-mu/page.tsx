@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
+//import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -39,7 +39,7 @@ export default async function GameDaMuPage({
   const t = await getTranslations("pages.gameDaMu");
   const m = await getTranslations("mission");
   const f = await getTranslations("founder");
-  const tf = useTranslations("footer");
+  const tf = await getTranslations({ locale, namespace: "footer" });
 
   const timeline = t.raw("timeline") as TimelineItem[];
   const pillars = t.raw("pillars") as Pillar[];
