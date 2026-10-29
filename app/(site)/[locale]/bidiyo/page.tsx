@@ -4,7 +4,8 @@ import { getLatestVideos, type Video } from "@/lib/youtube";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const CHANNEL_URL = "https://youtube.com/@malam_iromba";
+// const CHANNEL_URL = "https://youtube.com/@malam_iromba";
+const CHANNEL_URL = "https://youtube.com/playlist?list=PLXBKyxTE6bIg&si=PAKNHm325pLnMvjr";
 
 export async function generateMetadata({
   params,
