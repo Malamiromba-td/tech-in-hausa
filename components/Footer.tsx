@@ -26,12 +26,12 @@ export default function Footer() {
 
   const quickLinks = [
     { label: nav("home"), href: "/" },
-    { label: nav("about"), href: "/game-da-mu" },
+    { label: nav("about"), href: "/about" },
     //{ label: nav("videos"), href: "/bidiyo" },
     { label: nav("videos"), href: "/videos" },
     { label: nav("blog"), href: "/blog" },
-    { label: nav("research"), href: "/bincike" },
-    { label: nav("cta"), href: "/tuntube" },
+    { label: nav("research"), href: "/research" },
+    { label: nav("cta"), href: "/contact" },
   ];
 
   return (
