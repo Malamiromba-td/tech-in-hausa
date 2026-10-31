@@ -77,7 +77,7 @@ export default async function VideoGrid() {
 
         <div className="mt-11 flex justify-center">
           <Link
-            href="/bidiyo"
+            href="/videos"
             className="rounded-[3px] border border-indigo/25 px-6 py-3 text-[14.5px] font-medium text-indigo hover:bg-indigo-tint"
           >
             {t("viewAll")}
