@@ -261,13 +261,13 @@ export default async function GameDaMuPage({
           <p className="mb-8 text-[15px] text-paper/70">{t("ctaBody")}</p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Link
-              href="/bidiyo"
+              href="/videos"
               className="rounded-[3px] bg-gold px-6 py-3.5 font-semibold text-indigo-deep"
             >
               {t("ctaWatch")}
             </Link>
             <Link
-              href="/tuntube"
+              href="/contact"
               className="rounded-[3px] border border-paper/35 px-6 py-3.5 font-medium text-paper"
             >
               {t("ctaContact")}
