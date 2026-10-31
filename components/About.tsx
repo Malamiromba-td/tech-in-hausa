@@ -52,7 +52,7 @@ export default function About() {
             {t("body")}
           </p>
           <Link
-            href="/game-da-mu"
+            href="/about"
             className="mt-2.5 inline-block border-b-[1.5px] border-gold pb-0.5 text-[14.5px] font-semibold text-indigo"
           >
             {t("readMore")}

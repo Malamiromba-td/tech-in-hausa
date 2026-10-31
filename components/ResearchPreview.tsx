@@ -65,7 +65,7 @@ export default async function ResearchPreview() {
 
         <div className="mt-9 flex justify-center">
           <Link
-            href="/bincike"
+            href="/research"
             className="rounded-[3px] border border-indigo/25 px-6 py-3 text-[14.5px] font-medium text-indigo hover:bg-indigo-tint"
           >
             {t("viewAll")}

@@ -12,10 +12,11 @@ export default function Nav() {
 
   const links = [
     { href: "/", label: t("home") },
-    { href: "/bidiyo", label: t("videos") },
+    //{ href: "/bidiyo", label: t("videos") },
+    { href: "/videos", label: t("videos") },
     { href: "/blog", label: t("blog") },
-    { href: "/bincike", label: t("research") },
-    { href: "/game-da-mu", label: t("about") },
+    { href: "/research", label: t("research") },
+    { href: "/about", label: t("about") },
   ];
 
   const isActive = (href: string) => {
@@ -112,10 +113,10 @@ export default function Nav() {
   })}
                 
   <Link
-    href="/tuntube"
-    aria-current={isActive("/tuntube") ? "page" : undefined}
+    href="/contact"
+    aria-current={isActive("/contact") ? "page" : undefined}
     className={`rounded-[3px] px-5 py-2.5 font-medium transition-colors ${
-      isActive("/tuntube")
+      isActive("/contact")
         ? "bg-indigo-deep text-paper"
         : "bg-indigo text-paper hover:bg-indigo-deep"
     }`}
@@ -202,11 +203,11 @@ export default function Nav() {
     })}
 
     <Link
-      href="/tuntube"
+      href="/contact"
       onClick={() => setOpen(false)}
-      aria-current={isActive("/tuntube") ? "page" : undefined}
+      aria-current={isActive("/contact") ? "page" : undefined}
       className={`mt-2 rounded-[3px] px-4 py-3 text-center font-medium text-paper ${
-        isActive("/tuntube")
+        isActive("/contact")
           ? "bg-indigo-deep"
           : "bg-indigo hover:bg-indigo-deep"
       }`}

@@ -23,12 +23,12 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: "/bidiyo",
+      canonical: "/videos",
     },
     openGraph: {
       title: `${t("title")} — TechInHausa`,
       description: t("description"),
-      url: "/bidiyo",
+      url: "/videos",
     },
   };
 }
@@ -109,7 +109,7 @@ export default async function BidiyoPage({
       <main className="min-h-screen bg-paper">
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-line">
-          <div className="relative mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+          <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8">
             <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
               <div className="max-w-2xl">
                 <h1 className="font-display text-4xl leading-tight text-indigo-deep md:text-6xl">
@@ -121,7 +121,7 @@ export default async function BidiyoPage({
                 </p>
               </div>
 
-              <a
+              {/* <a
                 href={PLAYLIST_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -141,10 +141,10 @@ export default async function BidiyoPage({
                   : "View playlist"}
 
                 <span aria-hidden="true">↗</span>
-              </a>
+              </a>*/}
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-ink/55">
+        {/*<div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-ink/55">
               <span className="inline-flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-gold" />
                 {isHausa ? "Sabbin darussa" : "Latest lessons"}
@@ -156,12 +156,12 @@ export default async function BidiyoPage({
                   ? "bidiyo da aka nuna"
                   : "videos available"}
               </span>
-            </div>
+            </div>*/}
           </div>
         </section>
 
         {/* Video library */}
-        <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+        <section className="mx-auto max-w-6xl px-5 py-8 md:px-8 md:py-12">
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
