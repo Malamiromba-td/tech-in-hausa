@@ -68,7 +68,7 @@ export default async function BincikePage({
     <>
       <Nav />
 
-      <main className="min-h-[60vh] py-16">
+      <main className="min-h-[60vh] py-14">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
           <h1 className="mb-2 font-display text-[36px] text-indigo-deep">
             {t("heading")}
