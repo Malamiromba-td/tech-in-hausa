@@ -144,7 +144,7 @@ export default async function BidiyoPage({
               </a>*/}
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-ink/55">
+        {/*<div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-ink/55">
               <span className="inline-flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-gold" />
                 {isHausa ? "Sabbin darussa" : "Latest lessons"}
@@ -156,7 +156,7 @@ export default async function BidiyoPage({
                   ? "bidiyo da aka nuna"
                   : "videos available"}
               </span>
-            </div>
+            </div>*/}
           </div>
         </section>
 
