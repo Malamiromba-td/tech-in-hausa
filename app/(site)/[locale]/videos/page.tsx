@@ -23,12 +23,12 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: "/bidiyo",
+      canonical: "/videos",
     },
     openGraph: {
       title: `${t("title")} — TechInHausa`,
       description: t("description"),
-      url: "/bidiyo",
+      url: "/videos",
     },
   };
 }
