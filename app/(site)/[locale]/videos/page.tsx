@@ -121,7 +121,7 @@ export default async function BidiyoPage({
                 </p>
               </div>
 
-              <a
+              {/* <a
                 href={PLAYLIST_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -141,7 +141,7 @@ export default async function BidiyoPage({
                   : "View playlist"}
 
                 <span aria-hidden="true">↗</span>
-              </a>
+              </a>*/}
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-ink/55">
@@ -161,7 +161,7 @@ export default async function BidiyoPage({
         </section>
 
         {/* Video library */}
-        <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+        <section className="mx-auto max-w-6xl px-5 py-8 md:px-8 md:py-12">
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
