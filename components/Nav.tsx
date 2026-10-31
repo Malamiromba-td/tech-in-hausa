@@ -12,7 +12,8 @@ export default function Nav() {
 
   const links = [
     { href: "/", label: t("home") },
-    { href: "/bidiyo", label: t("videos") },
+    //{ href: "/bidiyo", label: t("videos") },
+    { href: "/videos", label: t("videos") },
     { href: "/blog", label: t("blog") },
     { href: "/bincike", label: t("research") },
     { href: "/game-da-mu", label: t("about") },
