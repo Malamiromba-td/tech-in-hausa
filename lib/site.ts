@@ -20,7 +20,7 @@ export const BUSINESS_EMAIL = "ibrahim@Malamiromba.com";
 export const OFFICES = [
   {
     name: "Kano Office",
-    address: "11B Hawan Dawaki Layout, Off Buk Newsite, Gwarzo Road, Kano, Nigeria",
+    address: "421 J & G Estate, opp. Salbas fuel station, Gaida Quarters, Kano, Nigeria",
   },
   {
     name: "Lagos Office",

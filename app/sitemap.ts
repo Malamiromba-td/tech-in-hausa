@@ -17,14 +17,22 @@ function alternates(path: string) {
 type SitemapPath = { path: string; priority: number; lastModified?: Date };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+//  const staticPaths: SitemapPath[] = [
+//    { path: "", priority: 1.0 },
+//    { path: "/bidiyo", priority: 0.8 },
+//    { path: "/blog", priority: 0.8 },
+//    { path: "/bincike", priority: 0.6 },
+//    { path: "/game-da-mu", priority: 0.6 },
+//    { path: "/tuntube", priority: 0.4 },
+//  ];
   const staticPaths: SitemapPath[] = [
-    { path: "", priority: 1.0 },
-    { path: "/bidiyo", priority: 0.8 },
-    { path: "/blog", priority: 0.8 },
-    { path: "/bincike", priority: 0.6 },
-    { path: "/game-da-mu", priority: 0.6 },
-    { path: "/tuntube", priority: 0.4 },
-  ];
+  { path: "", priority: 1.0 },
+  { path: "/videos", priority: 0.8 },
+  { path: "/blog", priority: 0.8 },
+  { path: "/research", priority: 0.6 },
+  { path: "/about", priority: 0.6 },
+  { path: "/contact", priority: 0.4 },
+];
 
   const posts = await getAllPosts();
   const blogPaths = posts.map((post) => ({

@@ -18,6 +18,21 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      { source: "/bidiyo", destination: "/videos", permanent: true },
+      { source: "/ha/bidiyo", destination: "/ha/videos", permanent: true },
+
+      { source: "/bincike", destination: "/research", permanent: true },
+      { source: "/ha/bincike", destination: "/ha/research", permanent: true },
+
+      { source: "/game-da-mu", destination: "/about", permanent: true },
+      { source: "/ha/game-da-mu", destination: "/ha/about", permanent: true },
+
+      { source: "/tuntube", destination: "/contact", permanent: true },
+      { source: "/ha/tuntube", destination: "/ha/contact", permanent: true },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

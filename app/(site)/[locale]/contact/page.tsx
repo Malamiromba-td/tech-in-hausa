@@ -29,11 +29,11 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: "/tuntube" },
+    alternates: { canonical: "/contact" },
     openGraph: {
       title: `${t("title")} — TechInHausa`,
       description: t("description"),
-      url: "/tuntube",
+      url: "/contact",
     },
   };
 }
@@ -59,7 +59,7 @@ export default async function TuntubePage({
   return (
     <>
       <Nav />
-      <section className="py-16">
+      <section className="py-14">
         <div className="mx-auto max-w-5xl px-5 md:px-8">
           <h1 className="mb-2 font-display text-[36px] text-indigo-deep">
             {t("heading")}

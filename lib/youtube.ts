@@ -2,8 +2,13 @@
 /**
  * lib/youtube.ts
  *
- * Fetches recent public uploads from the TechInHausa YouTube channel
- * without requiring a YouTube Data API key.
+ * Fetches recent videos from the configured public YouTube playlist.
+ *
+ * - No YouTube Data API key required.
+ * - Uses YouTube's public playlist RSS feed.
+ * - Caches successful feed responses for 15 minutes.
+ * - Applies request timeouts and validates parsed video entries.
+ * - Returns an empty array when the feed is unavailable.
  */
 
 export type Video = {
@@ -15,28 +20,60 @@ export type Video = {
   duration?: string;
 };
 
-const CHANNEL_URL = "https://www.youtube.com/@malam_iromba";
+const PLAYLIST_ID = "PLXBKyxTE6bIg";
 const CACHE_SECONDS = 900;
+const REQUEST_TIMEOUT_MS = 8000;
+const MAX_FEED_VIDEOS = 15;
+
+const FEED_URL =
+  `https://www.youtube.com/feeds/videos.xml?playlist_id=${encodeURIComponent(
+    PLAYLIST_ID
+  )}`;
 
 function decodeXml(value: string): string {
   return value
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&apos;/g, "'")
-    .replace(/&#(\d+);/g, (_, code: string) =>
-      String.fromCodePoint(Number(code))
-    )
-    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) =>
-      String.fromCodePoint(parseInt(code, 16))
-    );
+    .replace(/&#(\d+);/g, (_, code: string) => {
+      const number = Number(code);
+
+      try {
+        return Number.isSafeInteger(number) &&
+          number >= 0 &&
+          number <= 0x10ffff
+          ? String.fromCodePoint(number)
+          : "";
+      } catch {
+        return "";
+      }
+    })
+    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) => {
+      const number = Number.parseInt(code, 16);
+
+      try {
+        return Number.isSafeInteger(number) &&
+          number >= 0 &&
+          number <= 0x10ffff
+          ? String.fromCodePoint(number)
+          : "";
+      } catch {
+        return "";
+      }
+    });
 }
 
 function getTag(xml: string, tag: string): string {
   const escapedTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
   const match = xml.match(
-    new RegExp(`<${escapedTag}(?:\\s[^>]*)?>([\\s\\S]*?)</${escapedTag}>`, "i")
+    new RegExp(
+      `<${escapedTag}(?:\\s[^>]*)?>([\\s\\S]*?)</${escapedTag}\\s*>`,
+      "i"
+    )
   );
 
   return match?.[1]?.trim() ?? "";
@@ -48,6 +85,7 @@ function getAttribute(
   attribute: string
 ): string {
   const escapedTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
   const tagMatch = xml.match(
     new RegExp(`<${escapedTag}\\b([^>]*)\\/?>`, "i")
   );
@@ -60,306 +98,138 @@ function getAttribute(
   );
 
   const attributeMatch = tagMatch[1].match(
-    new RegExp(`\\b${escapedAttribute}\\s*=\\s*["']([^"']*)["']`, "i")
+    new RegExp(
+      `\\b${escapedAttribute}\\s*=\\s*["']([^"']*)["']`,
+      "i"
+    )
   );
 
-  return attributeMatch?.[1] ? decodeXml(attributeMatch[1]) : "";
+  return attributeMatch?.[1]
+    ? decodeXml(attributeMatch[1])
+    : "";
 }
 
-async function getChannelId(): Promise<string | null> {
-  try {
-    const response = await fetch(CHANNEL_URL, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; TechInHausa/1.0)",
-      },
-      signal: AbortSignal.timeout(8000),
-      next: { revalidate: 3600 },
-    });
+function parseVideoEntry(entry: string): Video | null {
+  const id = decodeXml(getTag(entry, "yt:videoId"));
 
-    if (!response.ok) return null;
+  // Standard YouTube video IDs contain exactly 11 URL-safe characters.
+  if (!/^[\w-]{11}$/.test(id)) return null;
 
-    const html = await response.text();
+  const title = decodeXml(getTag(entry, "title"));
+  const description = decodeXml(
+    getTag(entry, "media:description")
+  );
+  const publishedAt = decodeXml(getTag(entry, "published"));
+  const thumbnail = getAttribute(
+    entry,
+    "media:thumbnail",
+    "url"
+  );
 
-    // YouTube channel pages include the permanent UC... channel ID.
-    const match =
-      html.match(/"channelId"\s*:\s*"(UC[\w-]+)"/) ??
-      html.match(/youtube\.com\/channel\/(UC[\w-]+)/);
+  if (!title) return null;
 
-    return match?.[1] ?? null;
-  } catch {
-    return null;
-  }
-}
+  // Only accept valid timestamps. Invalid dates are omitted from display.
+  const validPublishedAt =
+    publishedAt && !Number.isNaN(Date.parse(publishedAt))
+      ? publishedAt
+      : "";
 
-export async function getLatestVideos(limit = 12): Promise<Video[]> {
-  try {
-    const channelId = await getChannelId();
+  // Avoid rendering unexpected URLs from malformed feed entries.
+  const validThumbnail = (() => {
+    try {
+      const url = new URL(thumbnail);
 
-    if (!channelId) {
-      console.error("TechInHausa: Could not resolve the YouTube channel ID.");
-      return [];
+      return url.protocol === "https:" &&
+        (url.hostname === "i.ytimg.com" ||
+          url.hostname.endsWith(".ytimg.com"))
+        ? url.toString()
+        : "";
+    } catch {
+      return "";
     }
+  })();
 
-    const feedUrl =
-      `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+  return {
+    id,
+    title,
+    description,
+    publishedAt: validPublishedAt,
+    thumbnail: validThumbnail,
+  };
+}
 
-    const response = await fetch(feedUrl, {
+export async function getLatestVideos(
+  limit = 12
+): Promise<Video[]> {
+  const safeLimit = Math.min(
+    Math.max(Math.floor(limit) || 1, 1),
+    MAX_FEED_VIDEOS
+  );
+
+  try {
+    const response = await fetch(FEED_URL, {
       headers: {
+        Accept: "application/atom+xml, application/xml, text/xml",
         "User-Agent": "Mozilla/5.0 (compatible; TechInHausa/1.0)",
       },
-      signal: AbortSignal.timeout(8000),
-      next: { revalidate: CACHE_SECONDS },
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      next: {
+        revalidate: CACHE_SECONDS,
+      },
     });
 
     if (!response.ok) {
-      console.error(`TechInHausa YouTube feed returned ${response.status}.`);
+      console.error(
+        `TechInHausa playlist feed returned HTTP ${response.status}.`
+      );
       return [];
     }
 
+    const contentType = response.headers.get("content-type") ?? "";
+
+    // YouTube normally returns an XML/Atom feed. Some responses may
+    // have a generic content type, so validate the body as well.
     const xml = await response.text();
 
-    if (!xml.includes("<feed")) {
-      console.error("TechInHausa: YouTube returned an invalid feed.");
+    if (
+      !xml.includes("<feed") ||
+      (!contentType.includes("xml") &&
+        !contentType.includes("atom") &&
+        !xml.includes("<entry"))
+    ) {
+      console.error(
+        "TechInHausa: YouTube returned an invalid playlist feed."
+      );
       return [];
     }
 
-    const entries = xml.match(/<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi) ?? [];
+    const entries =
+      xml.match(/<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi) ?? [];
 
-    return entries.slice(0, Math.min(Math.max(limit, 1), 15)).flatMap(
-      (entry): Video[] => {
-        const id = getTag(entry, "yt:videoId");
+    const videos: Video[] = [];
+    const seenIds = new Set<string>();
 
-        if (!/^[\w-]{11}$/.test(id)) return [];
+    for (const entry of entries) {
+      const video = parseVideoEntry(entry);
 
-        const title = decodeXml(getTag(entry, "title"));
-        const description = decodeXml(
-          getTag(entry, "media:description")
-        );
-        const publishedAt = getTag(entry, "published");
-        const thumbnail = getAttribute(entry, "media:thumbnail", "url");
+      if (!video || seenIds.has(video.id)) continue;
 
-        if (!title) return [];
+      seenIds.add(video.id);
+      videos.push(video);
 
-        return [{
-          id,
-          title,
-          description,
-          thumbnail,
-          publishedAt,
-        }];
-      }
-    );
+      if (videos.length >= safeLimit) break;
+    }
+
+    return videos;
   } catch (error) {
-    console.error("TechInHausa: Unable to fetch YouTube uploads.", error);
+    const message =
+      error instanceof Error ? error.message : String(error);
+
+    console.error(
+      "TechInHausa: Unable to fetch the YouTube playlist.",
+      message
+    );
+
     return [];
   }
 }
-
-
-
-/**
- * lib/youtube.ts
- * ---------------------------------
- * Pulls TechInHausa's videos directly from YouTube, so new uploads show
- * up on the site automatically without anyone touching code.
- *
- * Setup needed once deployed:
- *   1. YOUTUBE_API_KEY   — a YouTube Data API v3 key (Google Cloud Console)
- *   2. YOUTUBE_CHANNEL_ID — TechInHausa's channel ID (starts with "UC...")
- *
- * Both go in the project's environment variables (.env.local locally,
- * or the Vercel dashboard in production). Nothing else needs to change.
- *
- * If the env vars aren't set (e.g. running locally before setup, or if
- * the API call fails), this falls back to sample data so the site still
- * renders instead of crashing.
- */
-
-/*export type Video = {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  publishedAt: string;
-  duration?: string;
-};
-
-const FALLBACK_VIDEOS: Video[] = [
-  {
-    id: "fallback-1",
-    title: "Me ne ChatGPT? Bayani a Harshen Hausa",
-    description:
-      "Koyi yadda ChatGPT ke aiki, yadda ake amfani da shi, da kuma yadda zai taimaka m...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "18:22",
-  },
-  {
-    id: "fallback-2",
-    title: "Python Programming: Darasi na Farko a Hausa",
-    description:
-      "Fara koyon harshen Python daga farko. Darussa an tsara su ne domin mutanen da ba...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "22:10",
-  },
-  {
-    id: "fallback-3",
-    title: "Tsaro a Yanar Gizo: Kare Bayananku Online",
-    description:
-      "Muhimman shawarwari game da tsaro a intanet. Koyi yadda ake kare password da guj...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "15:45",
-  },
-  {
-    id: "fallback-4",
-    title: "Generative AI: Yadda Ake Kirkirar Hotuna da Rubutu",
-    description:
-      "Gabatarwa ga Generative AI - DALL-E, Midjourney, da ChatGPT. Koyi yadda AI ke ki...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "20:33",
-  },
-  {
-    id: "fallback-5",
-    title: "MubeeTech - Sole Developer",
-    description: "MubeeTech - Sole Developer",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "13:49",
-  },
-  {
-    id: "fallback-6",
-    title: "Web Development Darasi: HTML da CSS daga Farko",
-    description:
-      "Fara gina shafukan intanet. Koyi HTML da CSS daga farko-farko cikin harshen Haus...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "25:18",
-  },
-  {
-    id: "fallback-7",
-    title: "Data Science: Kimiyyar Bayanai a Hausa",
-    description:
-      "Menene Data Science? Koyi game da yadda ake tattara bayanai, nazari su, da kuma ...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "19:07",
-  },
-  {
-    id: "fallback-8",
-    title: "Breaking into tech in Hausa: Shiga Fasaha",
-    description: "Breaking into tech in Hausa: Shiga Fasaha",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "13:40",
-  },
-  {
-    id: "fallback-9",
-    title: "3 Most In-Demand Skills in 2026",
-    description: "3 Most In-Demand Skills in 2026",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "13:49",
-  },
-  {
-    id: "fallback-10",
-    title: "Neural Networks: Yadda Kwakwalwar AI ke Aiki",
-    description:
-      "Bayani mai saukaka game da Neural Networks da Deep Learning. Koyi yadda kwakwalw...",
-    thumbnail: "",
-    publishedAt: new Date().toISOString(),
-    duration: "23:54",
-  },
-];*/
-
-/**
- * Fetches the channel's uploads playlist, then the video details
- * (needed separately to get duration) for each item.
- * Revalidates once an hour so new uploads appear without a redeploy.
- */
-/*export async function getLatestVideos(limit = 12): Promise<Video[]> {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
-
-  if (!apiKey || !channelId) {
-    return FALLBACK_VIDEOS;
-  }
-
-  try {
-    // Step 1: resolve the channel's "uploads" playlist ID
-    const channelRes = await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${apiKey}`,
-      { next: { revalidate: 3600 } }
-    );
-    const channelData = await channelRes.json();
-    const uploadsPlaylistId =
-      channelData?.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-
-    if (!uploadsPlaylistId) return FALLBACK_VIDEOS;
-
-    // Step 2: get the latest videos from that playlist
-    const playlistRes = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=${limit}&key=${apiKey}`,
-      { next: { revalidate: 3600 } }
-    );
-    const playlistData = await playlistRes.json();
-
-    const videoIds: string[] = (playlistData?.items ?? [])
-      .map((item: { snippet?: { resourceId?: { videoId?: string } } }) => item.snippet?.resourceId?.videoId)
-      .filter(Boolean);
-
-    if (videoIds.length === 0) return FALLBACK_VIDEOS;
-
-    // Step 3: get durations for those videos
-    const detailsRes = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds.join(
-        ","
-      )}&key=${apiKey}`,
-      { next: { revalidate: 3600 } }
-    );
-    const detailsData = await detailsRes.json();
-
-    const videos: Video[] = (detailsData?.items ?? []).map(
-      (item: {
-        id: string;
-        snippet: {
-          title: string;
-          description: string;
-          publishedAt: string;
-          thumbnails?: { high?: { url: string }; medium?: { url: string } };
-        };
-        contentDetails: { duration: string };
-      }) => ({
-        id: item.id,
-        title: item.snippet.title,
-        description: item.snippet.description,
-        thumbnail:
-          item.snippet.thumbnails?.high?.url ??
-          item.snippet.thumbnails?.medium?.url ??
-          "",
-        publishedAt: item.snippet.publishedAt,
-        duration: formatDuration(item.contentDetails.duration),
-      })
-    );
-
-    return videos.length > 0 ? videos : FALLBACK_VIDEOS;
-  } catch {
-    return FALLBACK_VIDEOS;
-  }
-}*/
-
-/** Converts YouTube's ISO 8601 duration (e.g. "PT18M22S") to "18:22" */
-/*function formatDuration(iso: string): string {
-  const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  if (!match) return "";
-  const [, h, m, s] = match;
-  const hours = h ? parseInt(h) : 0;
-  const minutes = m ? parseInt(m) : 0;
-  const seconds = s ? parseInt(s) : 0;
-  const pad = (n: number) => n.toString().padStart(2, "0");
-  return hours > 0
-    ? `${hours}:${pad(minutes)}:${pad(seconds)}`
-    : `${minutes}:${pad(seconds)}`;
-}*/

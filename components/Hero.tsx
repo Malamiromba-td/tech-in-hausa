@@ -56,13 +56,13 @@ export default function Hero() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-3.5 md:mt-10">
             <Link
-              href="/bidiyo"
+              href="/videos"
               className="rounded-[3px] bg-gold px-6.5 py-3.5 text-center font-semibold text-indigo-deep"
             >
               {t("watchVideos")}
             </Link>
             <Link
-              href="/game-da-mu"
+              href="/about"
               className="rounded-[3px] border border-paper/35 px-6.5 py-3.5 text-center font-medium text-paper"
             >
               {t("aboutMalamiromba")}

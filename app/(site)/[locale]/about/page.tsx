@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+//import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -15,11 +16,11 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: "/game-da-mu" },
+    alternates: { canonical: "/about" },
     openGraph: {
       title: `${t("title")} — TechInHausa`,
       description: t("description"),
-      url: "/game-da-mu",
+      url: "/about",
     },
   };
 }
@@ -38,6 +39,7 @@ export default async function GameDaMuPage({
   const t = await getTranslations("pages.gameDaMu");
   const m = await getTranslations("mission");
   const f = await getTranslations("founder");
+  const tf = await getTranslations({ locale, namespace: "footer" });
 
   const timeline = t.raw("timeline") as TimelineItem[];
   const pillars = t.raw("pillars") as Pillar[];
@@ -55,7 +57,7 @@ export default async function GameDaMuPage({
       <Nav />
 
       {/* Our Story */}
-      <section className="py-14 md:py-20">
+      <section className="py-14">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
           {/* <div className="mb-3.5 text-[14.5px] font-medium text-indigo">
             {t("ourStoryLabel")}
@@ -64,7 +66,7 @@ export default async function GameDaMuPage({
             {t("heading")}
           </h1>
           <p className="mb-10 text-[16px] leading-relaxed text-ink/75">
-            {t("intro")}
+            {tf("description")}
           </p>
 
           <div className="grid grid-cols-2 gap-6 border-y border-line py-8 sm:grid-cols-4">
@@ -259,13 +261,13 @@ export default async function GameDaMuPage({
           <p className="mb-8 text-[15px] text-paper/70">{t("ctaBody")}</p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Link
-              href="/bidiyo"
+              href="/videos"
               className="rounded-[3px] bg-gold px-6 py-3.5 font-semibold text-indigo-deep"
             >
               {t("ctaWatch")}
             </Link>
             <Link
-              href="/tuntube"
+              href="/contact"
               className="rounded-[3px] border border-paper/35 px-6 py-3.5 font-medium text-paper"
             >
               {t("ctaContact")}

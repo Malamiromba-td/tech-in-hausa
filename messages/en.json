@@ -1,219 +1,231 @@
 {
-  "nav": {
-    "home": "Home",
-    "videos": "Videos",
-    "blog": "Blog",
-    "research": "Research",
-    "about": "About Us",
-    "contact": "Contact",
-    "cta": "Contact Us"
-  },
-  "hero": {
-    "kicker": "AI · Technology · Education",
-    "headlinePre": "Teaching the future in the",
-    "headlineEmphasis": "language of the people",
-    "subhead": "TechInHausa is a movement focused on making technology understandable, usable, and profitable for Hausa-speaking people — especially those who have been excluded from the digital economy. An education initiative by Ibrahim Zubairu (Malamiromba), connecting people to modern technology through language.",
-    "watchVideos": "Watch Videos",
-    "aboutMalamiromba": "About Malamiromba"
-  },
-  "stats": {
-    "hours": "Hours of Content",
-    "impressions": "Impressions",
-    "reach": "Audience Reach",
-    "community": "Community Members",
-    "subscribers": "Newsletter Subscribers"
-  },
-  "videos": {
-    "heading": "Featured Videos",
-    "subhead": "The latest and most popular tutorials, delivered in Hausa.",
-    "viewAll": "View All Videos"
-  },
-  "initiative": {
-    "tag": "An education initiative by Ibrahim Zubairu (Malamiromba) connecting people to modern technology through language.",
-    "p1": "TechInHausa (also referred to as Hausa AI and AI in Hausa) is a pioneering digital literacy initiative founded by Ibrahim Zubairu (Malamiromba). The initiative is focused on making modern technology — including programming, artificial intelligence, and digital skills — accessible, understandable, and usable for Hausa-speaking audiences worldwide.",
-    "p2": "Designed to address the growing gap between emerging technologies and linguistic accessibility, TechInHausa delivers culturally grounded, easy-to-understand educational content in both Hausa and simple English, enabling first-time tech learners to confidently engage with the digital economy.",
-    "p3": "Since its launch, the initiative has produced 48+ educational video resources, totaling approximately 200+ hours of structured learning content. These materials span a wide range of topics — from foundational digital skills such as email usage and introductory coding, to advanced concepts including Large Language Models, neural networks, and generative AI.",
-    "p4": "To date, TechInHausa has generated 3M+ impressions across 9+ countries, demonstrating strong organic reach and cross-border relevance among underserved and emerging tech communities.",
-    "p5": "All content is delivered free of charge, reinforcing the initiative's commitment to inclusivity, accessibility, and equitable access to technology education.",
-    "p6": "Beyond content creation, TechInHausa functions as a broader ecosystem for digital empowerment — bridging knowledge gaps, building confidence, and enabling practical pathways for learners to participate in the global digital economy.",
-    "sdg": "This initiative contributes to the UN Sustainable Development Goal 4 (Quality Education), demonstrating how technology supports cultural preservation while empowering communities worldwide."
-  },
-  "about": {
-    "eyebrow": "Mission",
-    "heading": "Bringing tech to every Hausa speaker",
-    "body": "To remove the barriers between technology and Hausa-speaking communities by making tech simple, practical, and usable for everyday people.",
-    "readMore": "Read More"
-  },
-  "mission": {
-    "missionLabel": "Mission",
-    "missionHeading": "Bringing tech to every Hausa speaker",
-    "missionBody": "To remove the barriers between technology and Hausa-speaking communities by making tech simple, practical, and usable for everyday people.",
-    "visionLabel": "Vision",
-    "visionHeading": "Hausa speakers leading the digital economy",
-    "visionBody": "To see Hausa speakers not just included in the digital economy, but leading and shaping it."
-  },
-  "founder": {
-    "eyebrow": "The Person Behind It",
-    "heading": "About Ibrahim Zubairu — Malamiromba",
-    "p1": "Ibrahim Zubairu (Malamiromba) is a Nigerian tech educator and community builder focused on making modern technology accessible to Hausa-speaking communities. He has taught and guided thousands of learners across Northern Nigeria and beyond, helping them understand and use digital tools, AI, and tech skills in practical, everyday ways.",
-    "p2": "Beyond teaching, Ibrahim advocates for AI literacy and the growth of technical capacity in underserved language communities. He believes that curiosity about technology is universal — what often stands in the way is access and understanding. This platform is a reflection of that belief: making technology clear, relatable, and usable for more people.",
-    "readMore": "Read More About Malamiromba"
-  },
-  "glossary": {
-    "heading": "TechInHausa Glossary",
-    "viewAll": "View All Glossary"
-  },
-  "blogPreview": {
-    "heading": "Latest from Malamiromba",
-    "subhead": "Recent videos, articles, and publications by Ibrahim Zubairu.",
-    "viewAll": "View All Content"
-  },
-  "researchPreview": {
-    "heading": "Research & Publications",
-    "subhead": "Peer-reviewed papers and academic contributions.",
-    "viewAll": "View All Research"
-  },
-  "newsletter": {
-    "heading": "Stay in the loop. Get the latest videos, articles, and AI research delivered straight to your inbox.",
-    "placeholder": "Your email address",
-    "subscribe": "Subscribe",
-    "consent": "I agree to receive emails from TechInHausa. Unsubscribe anytime."
-  },
-  "footer": {
-    "description": "TechInHausa brings technology and AI education to Hausa speakers worldwide. We teach programming, artificial intelligence, and modern tech in a clear, accessible way in Hausa.",
-    "quickLinks": "Quick Links",
-    "visitUs": "Visit Us",
-    "connect": "Connect with Malamiromba",
-    "rights": "All rights reserved."
-  },
-  "pages": {
-    "bidiyo": {
-      "title": "Videos",
-      "description": "All the video lessons we've published on YouTube, with new videos appearing automatically.",
-      "heading": "Videos"
-    },
-    "blog": {
-      "title": "Blog",
-      "description": "Articles, tutorials, and updates on technology, AI, and digital skills.",
-      "heading": "Blog & Tutorials",
-      "empty": "No posts yet — check back soon."
-    },
-    "bincike": {
-      "title": "Research",
-      "description": "Peer-reviewed papers and academic contributions on technology, AI, and the Hausa language.",
-      "heading": "Research & Publications",
-      "subhead": "Peer-reviewed papers and academic contributions.",
-      "readFull": "Read Full (PDF)"
-    },
-    "gameDaMu": {
-      "title": "About Us",
-      "description": "The story behind TechInHausa, its mission, and its founder, Ibrahim Zubairu (Malamiromba).",
-      "ourStoryLabel": "Our Story",
-      "heading": "About TechInHausa",
-      "intro": "TechInHausa is the home of technology and AI education in the Hausa language. Tutorials, videos, news and research — all free, all in Hausa.",
-      "statVideos": "Videos",
-      "statPosts": "Blog Posts",
-      "statPapers": "Research Papers",
-      "statSubscribers": "Subscribers",
-      "backgroundLabel": "01. Background",
-      "backgroundHeading": "How It All Started",
-      "backgroundSubhead": "From a single YouTube channel to a full educational platform",
-      "backgroundP1": "TechInHausa was founded by Ibrahim Zubairu (Malamiromba), with the aim of bringing technology and AI education to the Hausa-speaking community in their native language.",
-      "backgroundP2": "We started with a few videos on computer programming and have grown into a comprehensive educational platform offering tutorials, blog posts, news, and research across many fields of technology — all free, all in Hausa.",
-      "backgroundP3": "We believe language should never be a barrier to education. That is why we are committed to explaining tech concepts clearly and accessibly, always in Hausa.",
-      "purposeLabel": "02. Purpose",
-      "purposeHeading": "Mission & Vision",
-      "timelineLabel": "03. Timeline",
-      "timelineHeading": "Our Journey",
-      "timelineSubhead": "From an idea to a growing movement",
-      "timeline": [
-        {
-          "year": "2021",
-          "title": "The Realisation",
-          "subtitle": "Seeing the gap",
-          "body": "TechInHausa started from a simple realization: a lot of people were being left out of the digital economy not because they weren't capable, but because tech wasn't explained in a way they could understand. That was the starting point. The goal became clear: find a way to bridge that gap."
-        },
-        {
-          "year": "2022",
-          "title": "The First Step",
-          "subtitle": "Telling our own tech stories",
-          "body": "We started small with simple videos, breaking down programming and digital skills in Hausa. Nothing too much, just clear explanations. The idea was simple: simplify it. That's how our first pillar began: Malamiromba, telling our own tech stories, in our own language."
-        },
-        {
-          "year": "2023",
-          "title": "Building Connection",
-          "subtitle": "From learning alone to learning together",
-          "body": "As more people started engaging, one thing became obvious: content alone wasn't enough. People needed somewhere to ask questions, share, and grow. So we began building communities across platforms — spaces where people could learn together, not in isolation. This became our second pillar: Skills Arewa, turning individual learning into shared growth."
-        },
-        {
-          "year": "2024",
-          "title": "Going Deeper",
-          "subtitle": "From awareness to understanding",
-          "body": "We moved beyond videos into writing, newsletters, and more structured content. The focus wasn't just to introduce tech anymore, but to help people truly understand it — from the basics to things like AI."
-        },
-        {
-          "year": "2025",
-          "title": "Building What We Needed",
-          "subtitle": "From content to platforms",
-          "body": "At some point, it became clear: if we really wanted to scale impact, content alone wouldn't be enough. We needed systems. So we started building platforms and learning environments designed for real people with real challenges, real limitations, and real goals. This became our third pillar: Software Solutions (TathSchool), building what we need to learn, grow, and scale."
-        },
-        {
-          "year": "Today",
-          "title": "A Growing Ecosystem",
-          "subtitle": "More than just content",
-          "body": "TechInHausa has grown into more than just videos or posts. It's now an ecosystem built on three things: Content, making technology simple and understandable; Community, helping people grow together; and Platforms, creating structured paths for learning and access. Along the way, the work has gained recognition across major platforms — but more importantly, it continues to grow with one clear focus: making technology simple, practical, and usable for more people."
-        }
-      ],
-      "structureLabel": "04. Our Structure",
-      "structureHeading": "Three Pillars",
-      "structureSubhead": "The foundation of everything we do",
-      "pillars": [
-        {
-          "name": "Content",
-          "body": "Making technology simple and understandable through videos, blogs, and newsletters, all in Hausa."
-        },
-        {
-          "name": "Community",
-          "body": "Helping people grow together through shared learning spaces and peer support across platforms."
-        },
-        {
-          "name": "Platforms",
-          "body": "Creating structured paths for learning and access through software solutions and learning environments."
-        }
-      ],
-      "locationsLabel": "05. Locations",
-      "locationsHeading": "Where We Are",
-      "locationsSubhead": "Bridging the gap across Northern Nigeria and beyond",
-      "principlesLabel": "06. Principles",
-      "principlesHeading": "Our Values",
-      "principlesSubhead": "The principles that guide everything we do",
-      "values": [
-        { "name": "Love for Learning", "body": "We love education and want to share that love, making every lesson engaging and meaningful." },
-        { "name": "Accessibility", "body": "All content is free. Everyone deserves quality tech education regardless of background." },
-        { "name": "Quality", "body": "We provide education that helps learners understand and apply what they learn in real life." },
-        { "name": "Community", "body": "We are building a strong community of learners who support each other and grow together." }
-      ],
-      "ctaHeading": "Join Our Community",
-      "ctaBody": "Become one of thousands of people learning from us every day, free, in Hausa.",
-      "ctaWatch": "Watch Videos",
-      "ctaContact": "Contact Us"
-    },
-    "tuntube": {
-      "title": "Contact Us",
-      "description": "We would love to hear your feedback, questions, and collaboration ideas.",
-      "heading": "Contact Us",
-      "subhead": "We would love to hear your feedback, questions, and collaboration ideas.",
-      "detailsHeading": "Our Contact Details",
-      "workingHours": "Working Hours",
-      "connect": "Connect with Malamiromba",
-      "formHeading": "Send a Message",
-      "formSubhead": "We'd love to hear from you",
-      "namePlaceholder": "Your Name *",
-      "emailPlaceholder": "Email Address *",
-      "subjectPlaceholder": "Subject *",
-      "messagePlaceholder": "Message *",
-      "consent": "I agree to be contacted regarding this message.",
-      "send": "Send Message"
-    }
-  }
+"nav": {
+"home": "Home",
+"videos": "Videos",
+"blog": "Blog",
+"research": "Research",
+"about": "About Us",
+"contact": "Contact",
+"cta": "Contact Us"
+},
+"hero": {
+"kicker": "AI · Technology · Education",
+"headlinePre": "Teaching the future in the",
+"headlineEmphasis": "language of the people",
+"subhead": "TechInHausa is a movement focused on making technology understandable, usable, and profitable for Hausa-speaking people, especially those who have been excluded from the digital economy. An education initiative by Ibrahim Zubairu (Malamiromba), connecting people to modern technology through language.",
+"watchVideos": "Watch Videos",
+"aboutMalamiromba": "About Malamiromba"
+},
+"stats": {
+"hours": "Hours of Content",
+"impressions": "Impressions",
+"reach": "Audience Reach",
+"community": "Community Members",
+"subscribers": "Newsletter Subscribers"
+},
+"videos": {
+"heading": "Featured Videos",
+"subhead": "The latest and most popular tutorials, delivered in Hausa.",
+"viewAll": "View All Videos"
+},
+"initiative": {
+"tag": "An education initiative by Ibrahim Zubairu (Malamiromba) connecting people to modern technology through language.",
+"p1": "TechInHausa (also referred to as Hausa AI and AI in Hausa) is a pioneering digital literacy initiative founded by Ibrahim Zubairu (Malamiromba). The initiative is focused on making modern technology, including programming, artificial intelligence, and digital skills, accessible, understandable, and usable for Hausa-speaking audiences worldwide.",
+"p2": "Designed to address the growing gap between emerging technologies and linguistic accessibility, TechInHausa delivers culturally grounded, easy-to-understand educational content in both Hausa and simple English, enabling first-time tech learners to confidently engage with the digital economy.",
+"p3": "Since its launch, the initiative has produced 48+ educational video resources, totaling approximately 200+ hours of structured learning content. These materials span a wide range of topics, from foundational digital skills such as email usage and introductory coding to advanced concepts including Large Language Models, neural networks, and generative AI.",
+"p4": "To date, TechInHausa has generated 3M+ impressions across 9+ countries, demonstrating strong organic reach and cross-border relevance among underserved and emerging tech communities.",
+"p5": "All content is delivered free of charge, reinforcing the initiative's commitment to inclusivity, accessibility, and equitable access to technology education.",
+"p6": "Beyond content creation, TechInHausa functions as a broader ecosystem for digital empowerment, bridging knowledge gaps, building confidence, and enabling practical pathways for learners to participate in the global digital economy.",
+"sdg": "This initiative contributes to the UN Sustainable Development Goal 4 (Quality Education), demonstrating how technology supports cultural preservation while empowering communities worldwide."
+},
+"about": {
+"eyebrow": "Mission",
+"heading": "Bringing tech to every Hausa speaker",
+"body": "To remove the barriers between technology and Hausa-speaking communities by making tech simple, practical, and usable for everyday people.",
+"readMore": "Read More"
+},
+"mission": {
+"missionLabel": "Mission",
+"missionHeading": "Bringing tech to every Hausa speaker",
+"missionBody": "To remove the barriers between technology and Hausa-speaking communities by making tech simple, practical, and usable for everyday people.",
+"visionLabel": "Vision",
+"visionHeading": "Hausa speakers leading the digital economy",
+"visionBody": "To see Hausa speakers not just included in the digital economy, but leading and shaping it."
+},
+"founder": {
+"eyebrow": "The Person Behind It",
+"heading": "About Ibrahim Zubairu (Malamiromba)",
+"p1": "Ibrahim Zubairu (Malamiromba) is a Nigerian tech educator and community builder focused on making modern technology accessible to Hausa-speaking communities. He has taught and guided thousands of learners across Northern Nigeria and beyond, helping them understand and use digital tools, AI, and tech skills in practical, everyday ways.",
+"p2": "Beyond teaching, Ibrahim advocates for AI literacy and the growth of technical capacity in underserved language communities. He believes that curiosity about technology is universal. What often stands in the way is access and understanding. This platform is a reflection of that belief: making technology clear, relatable, and usable for more people.",
+"readMore": "Read More About Malamiromba"
+},
+"glossary": {
+"heading": "TechInHausa Glossary",
+"viewAll": "View All Glossary"
+},
+"blogPreview": {
+"heading": "Latest from Malamiromba",
+"subhead": "Recent videos, articles, and publications by Ibrahim Zubairu.",
+"viewAll": "View All Content"
+},
+"researchPreview": {
+"heading": "Research & Publications",
+"subhead": "Peer-reviewed papers and academic contributions.",
+"viewAll": "View All Research"
+},
+"newsletter": {
+"heading": "Stay in the loop. Get the latest videos, articles, and AI research delivered straight to your inbox.",
+"placeholder": "Your email address",
+"subscribe": "Subscribe",
+"consent": "I agree to receive emails from TechInHausa. Unsubscribe anytime."
+},
+"footer": {
+"description": "TechInHausa brings technology and AI education to Hausa speakers worldwide. We teach programming, artificial intelligence, and modern tech in a clear, accessible way in Hausa.",
+"quickLinks": "Quick Links",
+"visitUs": "Visit Us",
+"connect": "Connect with Malamiromba",
+"rights": "All rights reserved."
+},
+"pages": {
+"bidiyo": {
+"title": "Videos",
+"description": "All the video lessons we've published on YouTube, with new videos appearing automatically.",
+"heading": "Videos"
+},
+"blog": {
+"title": "Blog",
+"description": "Articles, tutorials, and updates on technology, AI, and digital skills.",
+"heading": "Blog & Tutorials",
+"empty": "No posts yet. Check back soon."
+},
+"bincike": {
+"title": "Research",
+"description": "Peer-reviewed papers and academic contributions on technology, AI, and the Hausa language.",
+"heading": "Research & Publications",
+"subhead": "Peer-reviewed papers and academic contributions.",
+"readFull": "Read Full (PDF)"
+},
+"gameDaMu": {
+"title": "About Us",
+"description": "The story behind TechInHausa, its mission, and its founder, Ibrahim Zubairu (Malamiromba).",
+"ourStoryLabel": "Our Story",
+"heading": "About TechInHausa",
+"intro": "TechInHausa is the home of technology and AI education in the Hausa language. Tutorials, videos, news and research, all free and all in Hausa.",
+"statVideos": "Videos",
+"statPosts": "Blog Posts",
+"statPapers": "Research Papers",
+"statSubscribers": "Subscribers",
+"backgroundLabel": "01. Background",
+"backgroundHeading": "How It All Started",
+"backgroundSubhead": "From a single YouTube channel to a full educational platform",
+"backgroundP1": "TechInHausa was founded by Ibrahim Zubairu (Malamiromba), with the aim of bringing technology and AI education to the Hausa-speaking community in their native language.",
+"backgroundP2": "We started with a few videos on computer programming and have grown into a comprehensive educational platform offering tutorials, blog posts, news, and research across many fields of technology, all free and all in Hausa.",
+"backgroundP3": "We believe language should never be a barrier to education. That is why we are committed to explaining tech concepts clearly and accessibly, always in Hausa.",
+"purposeLabel": "02. Purpose",
+"purposeHeading": "Mission & Vision",
+"timelineLabel": "03. Timeline",
+"timelineHeading": "Our Journey",
+"timelineSubhead": "From an idea to a growing movement",
+"timeline": [
+{
+"year": "2021",
+"title": "The Realisation",
+"subtitle": "Seeing the gap",
+"body": "TechInHausa started from a simple realization: a lot of people were being left out of the digital economy, not because they weren't capable, but because tech wasn't explained in a way they could understand. That was the starting point. The goal became clear: find a way to bridge that gap."
+},
+{
+"year": "2022",
+"title": "The First Step",
+"subtitle": "Telling our own tech stories",
+"body": "We started small with simple videos, breaking down programming and digital skills in Hausa. Nothing too much, just clear explanations. The idea was simple: simplify it. That's how our first pillar began: Malamiromba, telling our own tech stories in our own language."
+},
+{
+"year": "2023",
+"title": "Building Connection",
+"subtitle": "From learning alone to learning together",
+"body": "As more people started engaging, one thing became obvious: content alone wasn't enough. People needed somewhere to ask questions, share, and grow. So we began building communities across platforms, creating spaces where people could learn together, not in isolation. This became our second pillar: Skills Arewa, turning individual learning into shared growth."
+},
+{
+"year": "2024",
+"title": "Going Deeper",
+"subtitle": "From awareness to understanding",
+"body": "We moved beyond videos into writing, newsletters, and more structured content. The focus wasn't just to introduce tech anymore, but to help people truly understand it, from the basics to things like AI."
+},
+{
+"year": "2025",
+"title": "Building What We Needed",
+"subtitle": "From content to platforms",
+"body": "At some point, it became clear: if we really wanted to scale impact, content alone wouldn't be enough. We needed systems. So we started building platforms and learning environments designed for real people with real challenges, real limitations, and real goals. This became our third pillar: Software Solutions (TathSchool), building what we need to learn, grow, and scale."
+},
+{
+"year": "Today",
+"title": "A Growing Ecosystem",
+"subtitle": "More than just content",
+"body": "TechInHausa has grown into more than just videos or posts. It's now an ecosystem built on three things: Content, making technology simple and understandable; Community, helping people grow together; and Platforms, creating structured paths for learning and access. Along the way, the work has gained recognition across major platforms, but more importantly, it continues to grow with one clear focus: making technology simple, practical, and usable for more people."
+}
+],
+"structureLabel": "04. Our Structure",
+"structureHeading": "Three Pillars",
+"structureSubhead": "The foundation of everything we do",
+"pillars": [
+{
+"name": "Content",
+"body": "Making technology simple and understandable through videos, blogs, and newsletters, all in Hausa."
+},
+{
+"name": "Community",
+"body": "Helping people grow together through shared learning spaces and peer support across platforms."
+},
+{
+"name": "Platforms",
+"body": "Creating structured paths for learning and access through software solutions and learning environments."
+}
+],
+"locationsLabel": "05. Locations",
+"locationsHeading": "Where We Are",
+"locationsSubhead": "Bridging the gap across Northern Nigeria and beyond",
+"principlesLabel": "06. Principles",
+"principlesHeading": "Our Values",
+"principlesSubhead": "The principles that guide everything we do",
+"values": [
+{
+"name": "Love for Learning",
+"body": "We love education and want to share that love, making every lesson engaging and meaningful."
+},
+{
+"name": "Accessibility",
+"body": "All content is free. Everyone deserves quality tech education regardless of background."
+},
+{
+"name": "Quality",
+"body": "We provide education that helps learners understand and apply what they learn in real life."
+},
+{
+"name": "Community",
+"body": "We are building a strong community of learners who support each other and grow together."
+}
+],
+"ctaHeading": "Join Our Community",
+"ctaBody": "Become one of thousands of people learning from us every day, free and in Hausa.",
+"ctaWatch": "Watch Videos",
+"ctaContact": "Contact Us"
+},
+"tuntube": {
+"title": "Contact Us",
+"description": "We would love to hear your feedback, questions, and collaboration ideas.",
+"heading": "Contact Us",
+"subhead": "We would love to hear your feedback, questions, and collaboration ideas.",
+"detailsHeading": "Our Contact Details",
+"workingHours": "Working Hours",
+"connect": "Connect with Malamiromba",
+"formHeading": "Send a Message",
+"formSubhead": "We'd love to hear from you",
+"namePlaceholder": "Your Name *",
+"emailPlaceholder": "Email Address *",
+"subjectPlaceholder": "Subject *",
+"messagePlaceholder": "Message *",
+"consent": "I agree to be contacted regarding this message.",
+"send": "Send Message"
+}
+}
 }
