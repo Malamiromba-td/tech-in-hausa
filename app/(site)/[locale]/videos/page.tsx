@@ -109,7 +109,7 @@ export default async function BidiyoPage({
       <main className="min-h-screen bg-paper">
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-line">
-          <div className="relative mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+          <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8">
             <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
               <div className="max-w-2xl">
                 <h1 className="font-display text-4xl leading-tight text-indigo-deep md:text-6xl">
