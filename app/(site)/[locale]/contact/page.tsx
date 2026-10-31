@@ -29,11 +29,11 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: "/tuntube" },
+    alternates: { canonical: "/contact" },
     openGraph: {
       title: `${t("title")} — TechInHausa`,
       description: t("description"),
-      url: "/tuntube",
+      url: "/contact",
     },
   };
 }
