@@ -16,11 +16,11 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: "/game-da-mu" },
+    alternates: { canonical: "/about" },
     openGraph: {
       title: `${t("title")} — TechInHausa`,
       description: t("description"),
-      url: "/game-da-mu",
+      url: "/about",
     },
   };
 }
