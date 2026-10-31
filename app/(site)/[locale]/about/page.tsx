@@ -57,7 +57,7 @@ export default async function GameDaMuPage({
       <Nav />
 
       {/* Our Story */}
-      <section className="py-14 md:py-20">
+      <section className="py-14">
         <div className="mx-auto max-w-3xl px-5 md:px-8">
           {/* <div className="mb-3.5 text-[14.5px] font-medium text-indigo">
             {t("ourStoryLabel")}
