@@ -71,7 +71,7 @@ export default function Newsletter() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex max-w-[420px] flex-1 flex-col gap-2"
+          className="flex w-full min-w-0 max-w-[420px] flex-1 flex-col gap-2"
         >
           <div className="flex gap-2.5">
             <input
