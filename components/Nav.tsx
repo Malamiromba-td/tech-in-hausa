@@ -28,7 +28,7 @@ export default function Nav() {
 };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-line bg-paper pt-5">
+    <nav className="sticky top-0 z-50 border-b border-line bg-paper pt-5 bg-green-350">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
         <Link
           href="/"
