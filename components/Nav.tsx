@@ -173,3 +173,8 @@ export default function Nav() {
           </div>
         </div>
       </nav>
+{/* Spacer so page content doesn't sit under the fixed nav */}
+      <div aria-hidden className={NAV_HEIGHT} />
+    </>
+  );
+}
