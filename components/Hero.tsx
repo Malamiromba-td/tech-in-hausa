@@ -6,29 +6,6 @@ export default function Hero() {
 
   return (
     <header className="relative overflow-hidden bg-indigo-deep text-paper">
-      {/*<svg
-        className="pointer-events-none absolute inset-0 opacity-[0.14]"
-        viewBox="0 0 400 400"
-        preserveAspectRatio="xMaxYMax slice"
-      >
-        <defs>
-          <pattern
-            id="adire"
-            width="50"
-            height="50"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M25 2 L48 25 L25 48 L2 25 Z"
-              fill="none"
-              stroke="var(--color-gold)"
-              strokeWidth="1"
-            />
-            <circle cx="25" cy="25" r="3" fill="var(--color-gold)" />
-          </pattern>
-        </defs>
-        <rect width="400" height="400" fill="url(#adire)" />
-      </svg>*/}
       <div
   aria-hidden="true"
   className="pointer-events-none absolute inset-0 opacity-[0.20]"
@@ -44,14 +21,14 @@ export default function Hero() {
           <div className="mb-5 text-[13.5px] font-medium text-gold-soft md:text-[14.5px]">
             {t("kicker")}
           </div>
-          <h1 className="max-w-xl font-display text-[32px] font-medium leading-[1.12] text-paper sm:text-[38px] md:text-[60px] md:leading-[1.08]">
+          <h1 className="max-w-xl font-display text-[45px] font-medium leading-[1.12] text-paper sm:text-[38px] md:text-[60px] md:leading-[1.08]">
             {t("headlinePre")}{" "}
             <em className="text-gold-soft not-italic italic">
               {t("headlineEmphasis")}
             </em>
             .
           </h1>
-          <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-paper/80 md:mt-6 md:text-[17px]">
+          <p className="mt-5 max-w-md text-[10.5px] leading-relaxed text-paper/80 md:mt-6 md:text-[12px]">
             {t("subhead")}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-3.5 md:mt-10">
