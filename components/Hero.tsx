@@ -28,7 +28,7 @@ export default function Hero() {
             </em>
             .
           </h1>
-          <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-paper/80 md:mt-6 md:text-[17px]">
+          <p className="mt-5 max-w-md text-[10.5px] leading-relaxed text-paper/80 md:mt-6 md:text-[12px]">
             {t("subhead")}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-3.5 md:mt-10">
