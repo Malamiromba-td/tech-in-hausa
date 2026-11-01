@@ -28,6 +28,7 @@ export default function Nav() {
 };
 
   return (
+    <>
     <nav className="fixed top-0 inset-x-0 z-50 border-b border-line bg-paper">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
         <Link
@@ -217,5 +218,8 @@ export default function Nav() {
   </div>
 )}
     </nav>
+          <div aria-hidden="true" className="h-[80px] md:h-[76px]" />
+  </>
+);
   );
 }
