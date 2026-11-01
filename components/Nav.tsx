@@ -2,13 +2,22 @@
 
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function Nav() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const onScroll = () => setScrolled(window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
+
 
   const links = [
     { href: "/", label: t("home") },
@@ -28,7 +37,12 @@ export default function Nav() {
 };
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper pt-[env(safe-area-inset-top)]">
+    /*<nav className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper pt-[env(safe-area-inset-top)]">*/
+    <nav
+  className={`sticky top-0 z-50 border-b border-line bg-paper transition-shadow duration-300 ${
+    scrolled ? "shadow-[0_4px_20px_-12px_rgba(0,0,0,0.25)]" : "shadow-none"
+  }`}
+>
   <div className="mx-auto flex min-h-[76px] max-w-6xl items-center justify-between px-5 py-5 md:px-8">
     <Link
           href="/"
