@@ -29,7 +29,7 @@ export default function Nav() {
 
   return (
     <>
-    <nav className="fixed top-0 inset-x-0 z-50 border-b border-line py-5 bg-paper">
+    <nav className="fixed top-0 inset-x-0 z-50 border-b border-line py-1 bg-paper">
       <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between px-5 md:px-8">
         <Link
           href="/"
